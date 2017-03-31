@@ -1,0 +1,608 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7559ACF51DE62FEC00E7C55B /* LeagueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7559ACF41DE62FEC00E7C55B /* LeagueManager.swift */; };
+		7559ACF71DE6315C00E7C55B /* LeagueTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7559ACF61DE6315C00E7C55B /* LeagueTable.swift */; };
+		7559ACF91DE631B200E7C55B /* LeagueTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7559ACF81DE631B200E7C55B /* LeagueTableData.swift */; };
+		758B5FE41E78CB9800AFA60F /* FixtureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758B5FE31E78CB9800AFA60F /* FixtureManager.swift */; };
+		758B5FE61E78CC6100AFA60F /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758B5FE51E78CC6100AFA60F /* Fixture.swift */; };
+		75DA82021DE27A1300BA20DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DA82011DE27A1300BA20DE /* AppDelegate.swift */; };
+		75DA82041DE27A1300BA20DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DA82031DE27A1300BA20DE /* ViewController.swift */; };
+		75DA82071DE27A1300BA20DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DA82051DE27A1300BA20DE /* Main.storyboard */; };
+		75DA820A1DE27A1300BA20DE /* FootballRealm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 75DA82081DE27A1300BA20DE /* FootballRealm.xcdatamodeld */; };
+		75DA820C1DE27A1300BA20DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75DA820B1DE27A1300BA20DE /* Assets.xcassets */; };
+		75DA820F1DE27A1300BA20DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DA820D1DE27A1300BA20DE /* LaunchScreen.storyboard */; };
+		75DA821A1DE27A1300BA20DE /* FootballRealmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DA82191DE27A1300BA20DE /* FootballRealmTests.swift */; };
+		75DA82251DE27A1300BA20DE /* FootballRealmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DA82241DE27A1300BA20DE /* FootballRealmUITests.swift */; };
+		75DA82331DE27A2000BA20DE /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DA82321DE27A2000BA20DE /* Team.swift */; };
+		75DA82361DE27A5F00BA20DE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DA82341DE27A5F00BA20DE /* Realm.framework */; };
+		75DA82371DE27A5F00BA20DE /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75DA82341DE27A5F00BA20DE /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		75DA82381DE27A5F00BA20DE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DA82351DE27A5F00BA20DE /* RealmSwift.framework */; };
+		75DA82391DE27A5F00BA20DE /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75DA82351DE27A5F00BA20DE /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		75DA823D1DE284B600BA20DE /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DA823C1DE284B600BA20DE /* League.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		75DA82161DE27A1300BA20DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75DA81F61DE27A1200BA20DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75DA81FD1DE27A1200BA20DE;
+			remoteInfo = FootballRealm;
+		};
+		75DA82211DE27A1300BA20DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75DA81F61DE27A1200BA20DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75DA81FD1DE27A1200BA20DE;
+			remoteInfo = FootballRealm;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		75DA823A1DE27A5F00BA20DE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				75DA82391DE27A5F00BA20DE /* RealmSwift.framework in Embed Frameworks */,
+				75DA82371DE27A5F00BA20DE /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7559ACF41DE62FEC00E7C55B /* LeagueManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueManager.swift; sourceTree = "<group>"; };
+		7559ACF61DE6315C00E7C55B /* LeagueTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueTable.swift; sourceTree = "<group>"; };
+		7559ACF81DE631B200E7C55B /* LeagueTableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueTableData.swift; sourceTree = "<group>"; };
+		758B5FE31E78CB9800AFA60F /* FixtureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureManager.swift; sourceTree = "<group>"; };
+		758B5FE51E78CC6100AFA60F /* Fixture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
+		75DA81FE1DE27A1200BA20DE /* FootballRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootballRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75DA82011DE27A1300BA20DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		75DA82031DE27A1300BA20DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		75DA82061DE27A1300BA20DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		75DA82091DE27A1300BA20DE /* FootballRealm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FootballRealm.xcdatamodel; sourceTree = "<group>"; };
+		75DA820B1DE27A1300BA20DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		75DA820E1DE27A1300BA20DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		75DA82101DE27A1300BA20DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75DA82151DE27A1300BA20DE /* FootballRealmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FootballRealmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		75DA82191DE27A1300BA20DE /* FootballRealmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballRealmTests.swift; sourceTree = "<group>"; };
+		75DA821B1DE27A1300BA20DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75DA82201DE27A1300BA20DE /* FootballRealmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FootballRealmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		75DA82241DE27A1300BA20DE /* FootballRealmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballRealmUITests.swift; sourceTree = "<group>"; };
+		75DA82261DE27A1300BA20DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75DA82321DE27A2000BA20DE /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		75DA82341DE27A5F00BA20DE /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		75DA82351DE27A5F00BA20DE /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		75DA823C1DE284B600BA20DE /* League.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		75DA81FB1DE27A1200BA20DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75DA82381DE27A5F00BA20DE /* RealmSwift.framework in Frameworks */,
+				75DA82361DE27A5F00BA20DE /* Realm.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75DA82121DE27A1300BA20DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75DA821D1DE27A1300BA20DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		75DA81F51DE27A1200BA20DE = {
+			isa = PBXGroup;
+			children = (
+				75DA82341DE27A5F00BA20DE /* Realm.framework */,
+				75DA82351DE27A5F00BA20DE /* RealmSwift.framework */,
+				75DA82001DE27A1200BA20DE /* FootballRealm */,
+				75DA82181DE27A1300BA20DE /* FootballRealmTests */,
+				75DA82231DE27A1300BA20DE /* FootballRealmUITests */,
+				75DA81FF1DE27A1200BA20DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		75DA81FF1DE27A1200BA20DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75DA81FE1DE27A1200BA20DE /* FootballRealm.app */,
+				75DA82151DE27A1300BA20DE /* FootballRealmTests.xctest */,
+				75DA82201DE27A1300BA20DE /* FootballRealmUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75DA82001DE27A1200BA20DE /* FootballRealm */ = {
+			isa = PBXGroup;
+			children = (
+				75DA82011DE27A1300BA20DE /* AppDelegate.swift */,
+				75DA82031DE27A1300BA20DE /* ViewController.swift */,
+				75DA82051DE27A1300BA20DE /* Main.storyboard */,
+				75DA820B1DE27A1300BA20DE /* Assets.xcassets */,
+				75DA820D1DE27A1300BA20DE /* LaunchScreen.storyboard */,
+				75DA82101DE27A1300BA20DE /* Info.plist */,
+				75DA82081DE27A1300BA20DE /* FootballRealm.xcdatamodeld */,
+				75DA82321DE27A2000BA20DE /* Team.swift */,
+				75DA823C1DE284B600BA20DE /* League.swift */,
+				7559ACF41DE62FEC00E7C55B /* LeagueManager.swift */,
+				7559ACF61DE6315C00E7C55B /* LeagueTable.swift */,
+				7559ACF81DE631B200E7C55B /* LeagueTableData.swift */,
+				758B5FE31E78CB9800AFA60F /* FixtureManager.swift */,
+				758B5FE51E78CC6100AFA60F /* Fixture.swift */,
+			);
+			path = FootballRealm;
+			sourceTree = "<group>";
+		};
+		75DA82181DE27A1300BA20DE /* FootballRealmTests */ = {
+			isa = PBXGroup;
+			children = (
+				75DA82191DE27A1300BA20DE /* FootballRealmTests.swift */,
+				75DA821B1DE27A1300BA20DE /* Info.plist */,
+			);
+			path = FootballRealmTests;
+			sourceTree = "<group>";
+		};
+		75DA82231DE27A1300BA20DE /* FootballRealmUITests */ = {
+			isa = PBXGroup;
+			children = (
+				75DA82241DE27A1300BA20DE /* FootballRealmUITests.swift */,
+				75DA82261DE27A1300BA20DE /* Info.plist */,
+			);
+			path = FootballRealmUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		75DA81FD1DE27A1200BA20DE /* FootballRealm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75DA82291DE27A1300BA20DE /* Build configuration list for PBXNativeTarget "FootballRealm" */;
+			buildPhases = (
+				75DA81FA1DE27A1200BA20DE /* Sources */,
+				75DA81FB1DE27A1200BA20DE /* Frameworks */,
+				75DA81FC1DE27A1200BA20DE /* Resources */,
+				75DA823A1DE27A5F00BA20DE /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FootballRealm;
+			productName = FootballRealm;
+			productReference = 75DA81FE1DE27A1200BA20DE /* FootballRealm.app */;
+			productType = "com.apple.product-type.application";
+		};
+		75DA82141DE27A1300BA20DE /* FootballRealmTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75DA822C1DE27A1300BA20DE /* Build configuration list for PBXNativeTarget "FootballRealmTests" */;
+			buildPhases = (
+				75DA82111DE27A1300BA20DE /* Sources */,
+				75DA82121DE27A1300BA20DE /* Frameworks */,
+				75DA82131DE27A1300BA20DE /* Resources */,
+				75DA823B1DE27A9300BA20DE /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				75DA82171DE27A1300BA20DE /* PBXTargetDependency */,
+			);
+			name = FootballRealmTests;
+			productName = FootballRealmTests;
+			productReference = 75DA82151DE27A1300BA20DE /* FootballRealmTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		75DA821F1DE27A1300BA20DE /* FootballRealmUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75DA822F1DE27A1300BA20DE /* Build configuration list for PBXNativeTarget "FootballRealmUITests" */;
+			buildPhases = (
+				75DA821C1DE27A1300BA20DE /* Sources */,
+				75DA821D1DE27A1300BA20DE /* Frameworks */,
+				75DA821E1DE27A1300BA20DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				75DA82221DE27A1300BA20DE /* PBXTargetDependency */,
+			);
+			name = FootballRealmUITests;
+			productName = FootballRealmUITests;
+			productReference = 75DA82201DE27A1300BA20DE /* FootballRealmUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		75DA81F61DE27A1200BA20DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Kevin Zakszewski";
+				TargetAttributes = {
+					75DA81FD1DE27A1200BA20DE = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					75DA82141DE27A1300BA20DE = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 75DA81FD1DE27A1200BA20DE;
+					};
+					75DA821F1DE27A1300BA20DE = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 75DA81FD1DE27A1200BA20DE;
+					};
+				};
+			};
+			buildConfigurationList = 75DA81F91DE27A1200BA20DE /* Build configuration list for PBXProject "FootballRealm" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 75DA81F51DE27A1200BA20DE;
+			productRefGroup = 75DA81FF1DE27A1200BA20DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				75DA81FD1DE27A1200BA20DE /* FootballRealm */,
+				75DA82141DE27A1300BA20DE /* FootballRealmTests */,
+				75DA821F1DE27A1300BA20DE /* FootballRealmUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		75DA81FC1DE27A1200BA20DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75DA820F1DE27A1300BA20DE /* LaunchScreen.storyboard in Resources */,
+				75DA820C1DE27A1300BA20DE /* Assets.xcassets in Resources */,
+				75DA82071DE27A1300BA20DE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75DA82131DE27A1300BA20DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75DA821E1DE27A1300BA20DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		75DA823B1DE27A9300BA20DE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		75DA81FA1DE27A1200BA20DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7559ACF51DE62FEC00E7C55B /* LeagueManager.swift in Sources */,
+				75DA82331DE27A2000BA20DE /* Team.swift in Sources */,
+				75DA82041DE27A1300BA20DE /* ViewController.swift in Sources */,
+				75DA82021DE27A1300BA20DE /* AppDelegate.swift in Sources */,
+				7559ACF71DE6315C00E7C55B /* LeagueTable.swift in Sources */,
+				7559ACF91DE631B200E7C55B /* LeagueTableData.swift in Sources */,
+				758B5FE41E78CB9800AFA60F /* FixtureManager.swift in Sources */,
+				758B5FE61E78CC6100AFA60F /* Fixture.swift in Sources */,
+				75DA823D1DE284B600BA20DE /* League.swift in Sources */,
+				75DA820A1DE27A1300BA20DE /* FootballRealm.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75DA82111DE27A1300BA20DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75DA821A1DE27A1300BA20DE /* FootballRealmTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75DA821C1DE27A1300BA20DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75DA82251DE27A1300BA20DE /* FootballRealmUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		75DA82171DE27A1300BA20DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75DA81FD1DE27A1200BA20DE /* FootballRealm */;
+			targetProxy = 75DA82161DE27A1300BA20DE /* PBXContainerItemProxy */;
+		};
+		75DA82221DE27A1300BA20DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75DA81FD1DE27A1200BA20DE /* FootballRealm */;
+			targetProxy = 75DA82211DE27A1300BA20DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		75DA82051DE27A1300BA20DE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75DA82061DE27A1300BA20DE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		75DA820D1DE27A1300BA20DE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75DA820E1DE27A1300BA20DE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		75DA82271DE27A1300BA20DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		75DA82281DE27A1300BA20DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		75DA822A1DE27A1300BA20DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = FootballRealm/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kevinzakszewski.FootballRealm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		75DA822B1DE27A1300BA20DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = FootballRealm/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kevinzakszewski.FootballRealm;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		75DA822D1DE27A1300BA20DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				INFOPLIST_FILE = FootballRealmTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kevinzakszewski.FootballRealmTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FootballRealm.app/FootballRealm";
+			};
+			name = Debug;
+		};
+		75DA822E1DE27A1300BA20DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				INFOPLIST_FILE = FootballRealmTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kevinzakszewski.FootballRealmTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FootballRealm.app/FootballRealm";
+			};
+			name = Release;
+		};
+		75DA82301DE27A1300BA20DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FootballRealmUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kevinzakszewski.FootballRealmUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FootballRealm;
+			};
+			name = Debug;
+		};
+		75DA82311DE27A1300BA20DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FootballRealmUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = kevinzakszewski.FootballRealmUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FootballRealm;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		75DA81F91DE27A1200BA20DE /* Build configuration list for PBXProject "FootballRealm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75DA82271DE27A1300BA20DE /* Debug */,
+				75DA82281DE27A1300BA20DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75DA82291DE27A1300BA20DE /* Build configuration list for PBXNativeTarget "FootballRealm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75DA822A1DE27A1300BA20DE /* Debug */,
+				75DA822B1DE27A1300BA20DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75DA822C1DE27A1300BA20DE /* Build configuration list for PBXNativeTarget "FootballRealmTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75DA822D1DE27A1300BA20DE /* Debug */,
+				75DA822E1DE27A1300BA20DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75DA822F1DE27A1300BA20DE /* Build configuration list for PBXNativeTarget "FootballRealmUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75DA82301DE27A1300BA20DE /* Debug */,
+				75DA82311DE27A1300BA20DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		75DA82081DE27A1300BA20DE /* FootballRealm.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				75DA82091DE27A1300BA20DE /* FootballRealm.xcdatamodel */,
+			);
+			currentVersion = 75DA82091DE27A1300BA20DE /* FootballRealm.xcdatamodel */;
+			path = FootballRealm.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 75DA81F61DE27A1200BA20DE /* Project object */;
+}

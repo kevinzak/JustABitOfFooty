@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FootballRealm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pM-Qf-pPS">
+                                <rect key="frame" x="246" y="218" width="108" height="30"/>
+                                <state key="normal" title="Play Next Week">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playGameWeek" destination="BYZ-38-t0r" eventType="touchUpInside" id="lpC-S7-0Uh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSJ-8N-KN6">
+                                <rect key="frame" x="255" y="256" width="91" height="30"/>
+                                <state key="normal" title="Display Table">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="displayTable" destination="BYZ-38-t0r" eventType="touchUpInside" id="ryw-Ee-yyQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sz6-p7-Im0">
+                                <rect key="frame" x="255" y="294" width="91" height="30"/>
+                                <state key="normal" title="Display Stats">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="displayTeamStats" destination="BYZ-38-t0r" eventType="touchUpInside" id="QP3-Mv-YZ0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7S3-S2-arz">
+                                <rect key="frame" x="258" y="180" width="85" height="30"/>
+                                <state key="normal" title="Play Season">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playSeason" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Zk-f4-aSP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Sz6-p7-Im0" firstAttribute="centerX" secondItem="VSJ-8N-KN6" secondAttribute="centerX" id="C5s-OB-FG9"/>
+                            <constraint firstItem="7S3-S2-arz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="GUs-zl-jXG"/>
+                            <constraint firstItem="Sz6-p7-Im0" firstAttribute="top" secondItem="VSJ-8N-KN6" secondAttribute="bottom" constant="5" id="KNK-4p-rGT"/>
+                            <constraint firstItem="6pM-Qf-pPS" firstAttribute="centerX" secondItem="7S3-S2-arz" secondAttribute="centerX" id="KzF-Bb-Pur"/>
+                            <constraint firstItem="6pM-Qf-pPS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="226" id="MJe-Fq-PTg"/>
+                            <constraint firstItem="7S3-S2-arz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TqZ-9U-WZ2"/>
+                            <constraint firstItem="6pM-Qf-pPS" firstAttribute="top" secondItem="7S3-S2-arz" secondAttribute="bottom" constant="10" id="fHe-23-SIJ"/>
+                            <constraint firstItem="VSJ-8N-KN6" firstAttribute="centerX" secondItem="6pM-Qf-pPS" secondAttribute="centerX" id="mNJ-W3-6YS"/>
+                            <constraint firstItem="VSJ-8N-KN6" firstAttribute="top" secondItem="6pM-Qf-pPS" secondAttribute="bottom" constant="20" id="s59-re-c2Q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6pM-Qf-pPS" secondAttribute="trailing" constant="226" id="s68-6e-6h3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="MJe-Fq-PTg"/>
+                                <exclude reference="s68-6e-6h3"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
