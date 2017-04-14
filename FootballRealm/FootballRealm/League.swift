@@ -204,6 +204,13 @@ class League: Object {
     
     //   * * * * * DISPLAY FUNCTIONS * * * * *
     
+    func displayTeamRatings(){
+        for(var i = 0; i < mTeams.count; i++){
+            mTeams[i].displayRatings()
+            print()
+        }
+    }
+
     func displayTeamStats(){
         for(var i = 0; i < mTeams.count; i++){
             mTeams[i].displayStats()

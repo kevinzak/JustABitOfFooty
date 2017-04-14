@@ -211,6 +211,15 @@ class Team: Object {
         
     }
 
+    func displayRatings(){
+        print(name)
+        print("Overall: " + String(self.overall_rating))
+        print("GK: " + String(self.goalkeeper_rating))
+        print("DEF: " + String(self.defense_rating))
+        print("MID: " + String(self.midfield_rating))
+        print("ATTACK: " + String(self.attack_rating))        
+    }
+
     //  Controlled by what league you're in and if you went from league to league
     //  For example, a team going from Premier League to championship will probably lose it's good players
     //  While a team getting promoted to the Prem will invest in good players, improving their maxAddition

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -37,8 +37,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sz6-p7-Im0">
-                                <rect key="frame" x="255" y="294" width="91" height="30"/>
-                                <state key="normal" title="Display Stats">
+                                <rect key="frame" x="249" y="294" width="103" height="30"/>
+                                <state key="normal" title="Display History">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -54,6 +54,13 @@
                                     <action selector="playSeason" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Zk-f4-aSP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWL-HR-MMH">
+                                <rect key="frame" x="235" y="332" width="131" height="30"/>
+                                <state key="normal" title="Display Team Stats"/>
+                                <connections>
+                                    <action selector="displayTeamRatings" destination="BYZ-38-t0r" eventType="touchUpInside" id="AXg-k6-vrr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -62,11 +69,13 @@
                             <constraint firstItem="Sz6-p7-Im0" firstAttribute="top" secondItem="VSJ-8N-KN6" secondAttribute="bottom" constant="5" id="KNK-4p-rGT"/>
                             <constraint firstItem="6pM-Qf-pPS" firstAttribute="centerX" secondItem="7S3-S2-arz" secondAttribute="centerX" id="KzF-Bb-Pur"/>
                             <constraint firstItem="6pM-Qf-pPS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="226" id="MJe-Fq-PTg"/>
+                            <constraint firstItem="xWL-HR-MMH" firstAttribute="centerX" secondItem="Sz6-p7-Im0" secondAttribute="centerX" id="MKz-Qv-2w5"/>
                             <constraint firstItem="7S3-S2-arz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TqZ-9U-WZ2"/>
                             <constraint firstItem="6pM-Qf-pPS" firstAttribute="top" secondItem="7S3-S2-arz" secondAttribute="bottom" constant="10" id="fHe-23-SIJ"/>
                             <constraint firstItem="VSJ-8N-KN6" firstAttribute="centerX" secondItem="6pM-Qf-pPS" secondAttribute="centerX" id="mNJ-W3-6YS"/>
                             <constraint firstItem="VSJ-8N-KN6" firstAttribute="top" secondItem="6pM-Qf-pPS" secondAttribute="bottom" constant="20" id="s59-re-c2Q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6pM-Qf-pPS" secondAttribute="trailing" constant="226" id="s68-6e-6h3"/>
+                            <constraint firstItem="xWL-HR-MMH" firstAttribute="top" secondItem="Sz6-p7-Im0" secondAttribute="bottom" constant="8" id="z3z-YM-ZsP"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

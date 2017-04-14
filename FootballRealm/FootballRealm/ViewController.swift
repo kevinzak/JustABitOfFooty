@@ -211,6 +211,10 @@ class ViewController: UIViewController {
         mLeagueManager?.displayStats()
     }
     
+    @IBAction func displayTeamRatings(){
+        mLeagueManager?.displayTeamRatings()
+    }
+    
 
 
 }
