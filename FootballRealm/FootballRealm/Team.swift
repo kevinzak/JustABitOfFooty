@@ -25,13 +25,13 @@ class Team: Object {
     dynamic var overall_rating: Float = 0.0
     dynamic var league_id: String = ""
     
-    dynamic private var wins: Int = 0
-    dynamic private var draws: Int = 0
-    dynamic private var loses: Int = 0
-    dynamic private var goals_against: Int = 0
-    dynamic private var goals_for: Int = 0
-    dynamic private var matches_played: Int = 0
-    dynamic private var points: Int = 0
+//    dynamic private var wins: Int = 0
+//    dynamic private var draws: Int = 0
+//    dynamic private var loses: Int = 0
+//    dynamic private var goals_against: Int = 0
+//    dynamic private var goals_for: Int = 0
+//    dynamic private var matches_played: Int = 0
+//    dynamic private var points: Int = 0
     
     dynamic private var league_titles: Int = 0
     dynamic private var promotions: Int = 0
@@ -68,13 +68,13 @@ class Team: Object {
         self.defense_rating = 0.0;
         self.goalkeeper_rating = 0.0;
         
-        self.matches_played = 0
-        self.wins = 0
-        self.loses = 0
-        self.draws = 0
-        self.goals_for = 0
-        self.goals_against = 0
-        self.points = 0
+//        self.matches_played = 0
+//        self.wins = 0
+//        self.loses = 0
+//        self.draws = 0
+//        self.goals_for = 0
+//        self.goals_against = 0
+//        self.points = 0
         
         self.league_titles = 0
         self.promotions = 0
@@ -101,19 +101,43 @@ class Team: Object {
         self.overall_rating = (Float(self.attack_rating) + Float(self.midfield_rating) + Float(self.defense_rating) + Float(self.goalkeeper_rating))/4
     }
 
-    private func updateAttackRating(updateAmt : Float){ self.attack_rating = Float(attack_rating) + updateAmt }
-    private func updateMidfieldkRating(updateAmt : Float){ self.midfield_rating = Float(midfield_rating) + updateAmt }
-    private func updateDefenseRating(updateAmt : Float){ self.defense_rating = Float(defense_rating) + updateAmt }
-    private func updateGoalkeeperRating(updateAmt : Float){ self.goalkeeper_rating = Float(self.goalkeeper_rating) + updateAmt }
+    private func updateAttackRating(updateAmt : Float){
+        let realm = try! Realm()
+        try! realm.write {
+            self.attack_rating = Float(attack_rating) + updateAmt
+        }
+    }
+    
+    private func updateMidfieldkRating(updateAmt : Float){
+        let realm = try! Realm()
+        try! realm.write {
+            self.midfield_rating = Float(midfield_rating) + updateAmt
+        }
+    }
+
+    private func updateDefenseRating(updateAmt : Float){
+        let realm = try! Realm()
+        try! realm.write {
+            self.defense_rating = Float(defense_rating) + updateAmt
+        }
+    
+    }
+    private func updateGoalkeeperRating(updateAmt : Float){
+        let realm = try! Realm()
+        try! realm.write {
+
+            self.goalkeeper_rating = Float(self.goalkeeper_rating) + updateAmt
+        }
+    }
     
     //  Table functions
-    func setMatchesPlayed(mp : Int){ self.matches_played = mp }
-    func setTeamWins(wins : Int){ self.wins = wins }
-    func setTeamLoses(loses : Int){ self.wins = loses }
-    func setTeamDraws(draws : Int){ self.draws = draws }
-    func setTeamGoalsFor(gf : Int){ self.goals_for = gf }
-    func setTeamGoalsAgainst(ga : Int){ self.goals_against = ga }
-    func setTeamPoints(pts : Int){ self.points = pts }
+//    func setMatchesPlayed(mp : Int){ self.matches_played = mp }
+//    func setTeamWins(wins : Int){ self.wins = wins }
+//    func setTeamLoses(loses : Int){ self.wins = loses }
+//    func setTeamDraws(draws : Int){ self.draws = draws }
+//    func setTeamGoalsFor(gf : Int){ self.goals_for = gf }
+//    func setTeamGoalsAgainst(ga : Int){ self.goals_against = ga }
+//    func setTeamPoints(pts : Int){ self.points = pts }
     
 //    func getMatchesPlayed()->Int{ return Int(self.matches_played); }
 //    func getWins()->Int{ return Int(self.wins); }
@@ -123,49 +147,67 @@ class Team: Object {
 //    func getGoalsAgainst()->Int{ return Int(goals_against); }
 //    func getPoints()->Int{ return Int(points); }
     
-    func addMatchPlayed(){ self.matches_played = Int(matches_played) + 1 }
-    func addGoalsFor(goals : Int){ self.goals_for = Int(goals_for) + goals }
-    func addGoalsAgainst(goals : Int){ goals_against = Int(goals_against) + goals }
-    func addPoints(pts : Int){ points = Int(points) + pts }
+//    func addMatchPlayed(){ self.matches_played = Int(matches_played) + 1 }
+//    func addGoalsFor(goals : Int){ self.goals_for = Int(goals_for) + goals }
+//    func addGoalsAgainst(goals : Int){ goals_against = Int(goals_against) + goals }
+//    func addPoints(pts : Int){ points = Int(points) + pts }
     
-    func addLeagueTitle(){ self.league_titles = Int(league_titles) + 1 }
-    func addPromotion(){ self.promotions = Int(promotions) + 1 }
-    func addRelegation(){ self.relegations = Int(relegations) + 1 }
-    
-    func addLoss(){
-        addMatchPlayed()
-        self.loses = Int(loses) + 1
+    // Adding stats
+    func addLeagueTitle(){
+        let realm = try! Realm()
+        try! realm.write {
+            self.league_titles = Int(league_titles) + 1
+        }
     }
     
-    func addWin(){
-        addMatchPlayed()
-        self.wins = Int(wins) + 1
-        addPoints(3)
-        
+    func addPromotion(){
+        let realm = try! Realm()
+        try! realm.write {
+            self.promotions = Int(promotions) + 1
+        }
     }
     
-    func addDraw(){
-        addMatchPlayed()
-        self.draws = Int(draws) + 1
-        addPoints(1)
-
+    func addRelegation(){
+        let realm = try! Realm()
+        try! realm.write {
+            self.relegations = Int(relegations) + 1
+        }
     }
+    
+//    func addLoss(){
+//        addMatchPlayed()
+//        self.loses = Int(loses) + 1
+//    }
+//    
+//    func addWin(){
+//        addMatchPlayed()
+//        self.wins = Int(wins) + 1
+//        addPoints(3)
+//        
+//    }
+//    
+//    func addDraw(){
+//        addMatchPlayed()
+//        self.draws = Int(draws) + 1
+//        addPoints(1)
+//
+//    }
 
     func resetTeamSeason(){
-        setMatchesPlayed(0)
-        setTeamWins(0)
-        setTeamLoses(0)
-        setTeamDraws(0)
-        setTeamGoalsFor(0)
-        setTeamGoalsAgainst(0)
-        setTeamPoints(0)
+//        setMatchesPlayed(0)
+//        setTeamWins(0)
+//        setTeamLoses(0)
+//        setTeamDraws(0)
+//        setTeamGoalsFor(0)
+//        setTeamGoalsAgainst(0)
+//        setTeamPoints(0)
     }
     
     func displayStats(){
         print(name)
-        print("League Titles: " + String(_cocoaString: league_titles))
-        print("Promotions: " + String(_cocoaString: promotions))
-        print("Relegations: " + String(_cocoaString: relegations))
+        print("League Titles: " + String(self.league_titles))
+        print("Promotions: " + String(self.promotions))
+        print("Relegations: " + String(self.relegations))
         
     }
 

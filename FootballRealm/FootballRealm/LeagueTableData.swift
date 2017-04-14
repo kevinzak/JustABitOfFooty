@@ -23,6 +23,10 @@ class LeagueTableData: Object
     //    dynamic var team: Team!
     dynamic var teamId = "";
     dynamic var leagueId = "";
+
+    override static func primaryKey() -> String? {
+        return "teamId"
+    }
     
     convenience init(id: String, league: String) {
         self.init()

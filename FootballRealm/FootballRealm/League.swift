@@ -77,22 +77,14 @@ class League: Object {
         }
         
     }
-    func handleLeagueWinner(){
-        print(name + " is handling league title winner")
-        league_table!.getSortedTable()[0].addLeagueTitle()
-    }
-    
-    func handlePromotionAndRelegation(){
-        print(name + " is handling promotion and relegation")
-        promoteClubs()
-        relegateClubs()
-    }
 
     
     func promoteClubs(){
         var teamsToPromote : [Team] = []
         var sortedTable = league_table!.getSortedTable()
         let numOfTeamsPromoted = Int(num_promoted)
+        
+        
         if((league_above != nil) && numOfTeamsPromoted > 0){
             for(var i = 0; i < numOfTeamsPromoted; i++){
                 teamsToPromote.append(sortedTable[i])
@@ -110,8 +102,6 @@ class League: Object {
         
         
     }
-    
-    
     
     
     func relegateClubs(){
@@ -142,32 +132,54 @@ class League: Object {
     
     
     func acceptNewTeams(newTeams : [Team]){
-        mNewTeams.removeAll()
-        
-        for(var i = 0; i < newTeams.count; i++){
-            mNewTeams.append(newTeams[i])
+        let realm = try! Realm()
+        try! realm.write(){
+            mNewTeams.removeAll()
+            
+            for(var i = 0; i < newTeams.count; i++){
+                mNewTeams.append(newTeams[i])
+            }        
         }
     }
 
 
     
     func removeTeamById(teamId : String){
+        let realm = try! Realm()
         for(var i = 0; i < mTeams.count; i++){
             if(mTeams[i].getId() == teamId){
-                mTeams.removeAtIndex(i)
+                try! realm.write(){
+                    mTeams.removeAtIndex(i)
+                }
                 break
             }
         }
-        
+    }
+    
+    func handleLeagueWinner(){
+        let team = league_table!.getSortedTable()[0]
+        let realm = try! Realm()
+
+        team.addLeagueTitle()
+    }
+    
+    
+    func handlePromotionAndRelegation(){
+        promoteClubs()
+        relegateClubs()
     }
     
     func resetSeason(){
+        let realm = try! Realm()
+        try! realm.write(){
+
         // Added promoted and relegated teams
-        for(var i = 0; i < mNewTeams.count; i++){
-            mTeams.append(mNewTeams[i])
-        }
+            for(var i = 0; i < mNewTeams.count; i++){
+                mTeams.append(mNewTeams[i])
+            }
         
-        mNewTeams.removeAll()
+            mNewTeams.removeAll()
+        }
         
         mFixtureManager!.updateTeams(mTeams)
         mFixtureManager!.resetFixtures()

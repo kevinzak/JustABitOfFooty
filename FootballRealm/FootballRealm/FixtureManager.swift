@@ -30,6 +30,7 @@ class FixtureManager: Object {
         self.init()
         leagueId = id
         updateTeams(teams)
+        makeFixtures()
     }
     
     
@@ -38,12 +39,15 @@ class FixtureManager: Object {
     }
     
     func updateTeams(teams : List<Team>){
-        //        mTeams = teams;
-        mTeams.removeAll()
-        for team in teams{
-            mTeams.append(team)
+        let realm = try! Realm()
+        try! realm.write(){
+            
+            mTeams.removeAll()
+            for team in teams{
+                mTeams.append(team)
+            }
         }
-        makeFixtures();
+//        makeFixtures();
     }
     
     
@@ -57,8 +61,16 @@ class FixtureManager: Object {
 
     
     func makeFixtures(){
-        seasonLength = ((mTeams.count * 2 ) - 2)
-        var tempTeamList = mTeams;
+        let realm = try! Realm()
+        try! realm.write {
+            seasonLength = ((mTeams.count * 2 ) - 2)
+        }
+        
+        var tempTeamList = List<Team>();
+        
+        for(var j = 0; j < mTeams.count; j++){
+            tempTeamList.append(mTeams[j])
+        }
         var tOneIsHome = true;
         
         
@@ -99,7 +111,7 @@ class FixtureManager: Object {
                 }
                 
                 var fixture = Fixture(home: homeTeam!, away: awayTeam!, id : leagueId, week : i)
-                let realm = try! Realm()
+
                 try! realm.write {
                     realm.add(fixture)
                 }
@@ -117,10 +129,8 @@ class FixtureManager: Object {
             
             //increment "chair position by advancing tempList
             tempTeamList.insert(tempTeamList.removeLast(), atIndex: 1)
-            
-            //            printFixturesByWeek(i)
-            
         }
+        
     }
     
     func playNextFixtureWeek(printFixtures : Bool = false){
@@ -133,6 +143,7 @@ class FixtureManager: Object {
     }
     
     func playFixturesByWeek(week : Int, printFixtures : Bool = false){
+        print (leagueId + " Week " + String(week))
         let realm = try! Realm()
 
         var weeklyFixtures = realm.objects(Fixture.self).filter("leagueId contains '" + leagueId + "' AND gameWeek == " + String(week))
@@ -154,9 +165,9 @@ class FixtureManager: Object {
 
     func resetFixtures(){
         let realm = try! Realm()
-        currentWeek = 0
         var leagueFixtures = realm.objects(Fixture.self).filter("leagueId contains '" + leagueId + "'")
         try! realm.write {
+            currentWeek = 0
             realm.delete(leagueFixtures)
         }
 

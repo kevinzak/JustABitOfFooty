@@ -190,7 +190,10 @@ class ViewController: UIViewController {
         }
 
     }
-
+    
+    func resetSeason(){
+        mLeagueManager?.resetSeason()
+    }
     
     @IBAction func playGameWeek(){
         mLeagueManager?.playNextGameWeek();

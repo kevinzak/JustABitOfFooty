@@ -25,11 +25,17 @@ class LeagueTable: Object {
     }
     
     func initiateLeagueTableData(teams : List<Team>){
-        mOrderedTeamData.removeAll()
+        let realm = try! Realm()
+
         for team in teams{
             print(team.getId())
             let leagueTableDataEntry = LeagueTableData(id: team.getId(), league: leagueId)
-            mOrderedTeamData.append(leagueTableDataEntry)
+
+            try! realm.write {
+                realm.add(leagueTableDataEntry, update: true)
+            }
+
+          //  mOrderedTeamData.append(leagueTableDataEntry)
         }
     }
     
@@ -72,7 +78,7 @@ class LeagueTable: Object {
 
         let orderedTeams = List<Team>()
         for(var i = 0; i < teamData.count; i++){
-            let team = realm.objects(Team.self).filter("nid == " + teamData[i].getTeamId()).first
+            let team = realm.objects(Team.self).filter("nid == '" + teamData[i].getTeamId() + "'").first
             orderedTeams.append(team!)
 
         }

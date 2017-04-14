@@ -48,7 +48,6 @@ class Fixture: Object {
         self.homeTeamId = home.getId()
         self.awayTeamId = away.getId()
         self.fixtureId = home.getId() + "_" + away.getId() + "_" + id + "_" + String(week)
-        print(fixtureId)
     }
     
     func playMatch(printFixtr : Bool = false){
@@ -83,18 +82,21 @@ class Fixture: Object {
     }
     
     func printFixture(){
-        print(homeTeamId)
+        var homeString = "Home: " + homeTeamId!
+        var awayString = "Away: " + awayTeamId!
+
         if(homeGoals != -1){
-            print(" ")
-            print(homeGoals)
-            print(" - ")
-            print(awayGoals)
-            print(" ")
+            homeString = homeString  + " - " + String(homeGoals)
+            awayString = awayString  + " - " + String(awayGoals)
+
+            print(homeString)
+            print(awayString)
+            print("")
+
         }else{
-            print(" v. ")
+            print(homeString + " v. " + awayString)
         }
         
-        print(awayTeamId)
     }
     
     
