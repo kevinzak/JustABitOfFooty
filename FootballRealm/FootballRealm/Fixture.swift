@@ -119,48 +119,48 @@ class Fixture: Object {
         
 
         // Gets the rating fo the teams for calculation
-        var homeOvr = homeTeam?.getOverallRating()
-        var awayOvr = awayTeam?.getOverallRating()
+        let homeOvr = homeTeam?.getOverallRating()
+        let awayOvr = awayTeam?.getOverallRating()
         
-        var homeMid = homeTeam?.getMidfieldRating()
-        var awayMid = awayTeam?.getMidfieldRating()
+        let homeMid = homeTeam?.getMidfieldRating()
+        let awayMid = awayTeam?.getMidfieldRating()
         
-        var homeAtk = homeTeam?.getAttackRating()
-        var awayAtk = awayTeam?.getAttackRating()
+        let homeAtk = homeTeam?.getAttackRating()
+        let awayAtk = awayTeam?.getAttackRating()
         
-        var homeDef = homeTeam?.getDefenseRating()
-        var awayDef = awayTeam?.getDefenseRating()
+        let homeDef = homeTeam?.getDefenseRating()
+        let awayDef = awayTeam?.getDefenseRating()
         
-        var homeGlk = homeTeam?.getGoalkeeperRating()
-        var awayGlk = awayTeam?.getGoalkeeperRating()
+        let homeGlk = homeTeam?.getGoalkeeperRating()
+        let awayGlk = awayTeam?.getGoalkeeperRating()
         
         
         // Base for formula on how chancces are created
-        var homeChanceBase = homeMid! + homeAtk! + awayMid! + awayDef!
-        var awayChanceBase = awayMid! + awayAtk! + homeMid! + homeDef!
+        let homeChanceBase = homeMid! + homeAtk! + awayMid! + awayDef!
+        let awayChanceBase = awayMid! + awayAtk! + homeMid! + homeDef!
         
         // Gives rating of chance creation
-        var homeChanceTotal = ((homeAtk! + homeMid!) / homeChanceBase)  * 100
-        var awayChanceTotal = ((awayAtk! + awayMid!) / awayChanceBase)  * 100
+        let homeChanceTotal = ((homeAtk! + homeMid!) / homeChanceBase)  * 100
+        let awayChanceTotal = ((awayAtk! + awayMid!) / awayChanceBase)  * 100
         
         //Percentage/chance the teams will create a scoring opportunity
         //The - 0.075 creates a 15% chance neither team will create a scoring opportunity
-        var homeChancePercent = (homeChanceTotal) / (homeChanceTotal + awayChanceTotal) - 0.075
-        var awayChancePercent = (awayChanceTotal) / (homeChanceTotal + awayChanceTotal) - 0.075
+        let homeChancePercent = (homeChanceTotal) / (homeChanceTotal + awayChanceTotal) - 0.075
+        let awayChancePercent = (awayChanceTotal) / (homeChanceTotal + awayChanceTotal) - 0.075
         
         //Values used when random number is generated for scoring opporunity
         //Between midfloor and midCeil represents the 15% chance that no one makes a scoring opportunity
-        var midFloor = Int(homeChancePercent * 1000)
-        var midCeil = midFloor + 100
+        let midFloor = Int(homeChancePercent * 1000)
+        let midCeil = midFloor + 100
         
         
         
         
-        var homeScoringTotal = homeAtk! + awayDef! + awayGlk!
-        var awayScoringTotal = awayAtk! + homeDef! + homeGlk!
+        let homeScoringTotal = homeAtk! + awayDef! + awayGlk!
+        let awayScoringTotal = awayAtk! + homeDef! + homeGlk!
         
         var homeScoringPerc = homeAtk! / homeScoringTotal
-        var awayScoringPerc = awayAtk! / awayScoringTotal
+        let awayScoringPerc = awayAtk! / awayScoringTotal
         
         var homeGoalMidPoint = Int(homeScoringPerc * 1000) - 100
         var awayGoalMidPoint = Int(awayScoringPerc * 1000) - 100

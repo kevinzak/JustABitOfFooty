@@ -10,11 +10,16 @@ import UIKit
 import RealmSwift
 
 class ViewController: UIViewController {
+    var gkPerTeam = 3
+    var defPerTeam = 8
+    var midPerTeam = 8
+    var atkPerTeam = 5
     
     var teamList = List<Team>()
     var teamListLeagueTwo = List<Team>()
     
     var mLeagueManager : LeagueManager!
+    let letters : NSString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
     var teamNameList : [String] = [
         "Arsenal",
@@ -69,8 +74,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
         generateTeams()
         generateLeagues()
+        // Creates a new League Manager each time. League Manager loads the leagues 
+        // from Realm in its constructor and treats them as local instances essentailly
         mLeagueManager = LeagueManager()
     }
 
@@ -132,25 +140,20 @@ class ViewController: UIViewController {
             }
 
         }
-        }else{
-//            let eng_0_Teams = realm.objects(Team.self).filter("league_id contains 'Eng_0'")
- //           let eng_1_Teams = realm.objects(Team.self).filter("league_id contains 'Eng_1'")
-
-//            print(eng_0_Teams.count)
- //           print(eng_1_Teams.count)
-            
+        }else{            
             print("already have teams")
         }
 
     }
+    
     
     func generateLeagues(){
         let realm = try! Realm()
 
         let leagues = realm.objects(League.self)
         if(leagues.count == 0){
-            var premierLeague : League = League(name: "Premier League", id: "Eng_0", teams: teamList, promoted: 0, relegated: 3)
-            var championship : League = League(name: "Championship", id: "Eng_1", teams: teamListLeagueTwo, promoted: 3, relegated: 0)
+            var premierLeague : League = League(name: "Premier League", id: "Eng_0", teams: teamList, promoted: 0, relegated: 3, maxTransferAmt : 10, minTransferAmt : 10)
+            var championship : League = League(name: "Championship", id: "Eng_1", teams: teamListLeagueTwo, promoted: 3, relegated: 0, maxTransferAmt : 5, minTransferAmt : 5)
             
             premierLeague.setLeagueBelow(championship)
             championship.setLeagueAbove(premierLeague)
@@ -214,8 +217,27 @@ class ViewController: UIViewController {
     @IBAction func displayTeamRatings(){
         mLeagueManager?.displayTeamRatings()
     }
-    
 
+    @IBAction func displayTeamPlayers(){
+        mLeagueManager?.displayTeamPlayers()
+    }
+
+    func randomStringWithLength (len : Int) -> NSString {
+        
+        let letters : NSString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        
+        var randomString : NSMutableString = NSMutableString(capacity: len)
+        
+        for (var i=0; i < len; i++){
+            var length = UInt32 (letters.length)
+            var rand = arc4random_uniform(length)
+            randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        }
+        
+        return randomString
+    }
+
+    
 
 }
 

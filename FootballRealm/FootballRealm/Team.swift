@@ -36,6 +36,18 @@ class Team: Object {
     dynamic private var league_titles: Int = 0
     dynamic private var promotions: Int = 0
     dynamic private var relegations: Int = 0
+
+    // Flags set at the beginning and end of each season to determine how 
+    // being relegated or promoted effects their transfer business
+    var                 isPromoted = false;
+    var                 isRelegated = false;
+    
+    var mGoalkeepers = List<Player>()
+    var mDefenders = List<Player>()
+    var mMidfielders = List<Player>()
+    var mAttackers = List<Player>()
+    
+    
     
     override static func primaryKey() -> String? {
         return "nid"
@@ -56,6 +68,33 @@ class Team: Object {
         
         self.overall_rating = (Float(self.attack_rating) + Float(self.midfield_rating) + Float(self.defense_rating) + Float(self.goalkeeper_rating))/4
         
+        generateTeam()
+    }
+    
+    private func generateTeam(){
+        mGoalkeepers = PlayerFactory.sharedInstance.generateGoalkeepers() // Generate with default amount
+        mDefenders = PlayerFactory.sharedInstance.generateDefenders() // Generate with default amount
+        mMidfielders = PlayerFactory.sharedInstance.generateMidfielders() // Generate with default amount
+        mAttackers = PlayerFactory.sharedInstance.generateAttackers() // Generate with default amount
+        
+        print(name + "'s generated team")
+        
+        for(var i = 0; i < mGoalkeepers.count; i++){
+            mGoalkeepers[i].displayPlayer()
+        }
+
+        for(var i = 0; i < mDefenders.count; i++){
+            mDefenders[i].displayPlayer()
+        }
+        for(var i = 0; i < mMidfielders.count; i++){
+            mMidfielders[i].displayPlayer()
+        }
+        for(var i = 0; i < mAttackers.count; i++){
+            mAttackers[i].displayPlayer()
+        }
+        print()
+        print()
+
     }
     
     // Sets base
@@ -104,33 +143,59 @@ class Team: Object {
     private func updateAttackRating(updateAmt : Float){
         let realm = try! Realm()
         try! realm.write {
-            self.attack_rating = Float(attack_rating) + updateAmt
+            var newAttackRating = Float(attack_rating) + updateAmt;
+            if(newAttackRating > 100){
+                newAttackRating = 100
+            }else if(newAttackRating < 50){
+                newAttackRating = 50
+            }
+            self.attack_rating = newAttackRating
         }
     }
     
     private func updateMidfieldkRating(updateAmt : Float){
         let realm = try! Realm()
         try! realm.write {
-            self.midfield_rating = Float(midfield_rating) + updateAmt
+            var newMidRating = Float(midfield_rating) + updateAmt;
+            if(newMidRating > 100){
+                newMidRating = 100
+            }else if(newMidRating < 50){
+                newMidRating = 50
+            }
+
+            self.midfield_rating = newMidRating
         }
     }
 
     private func updateDefenseRating(updateAmt : Float){
         let realm = try! Realm()
         try! realm.write {
-            self.defense_rating = Float(defense_rating) + updateAmt
+            var newDefRating = Float(defense_rating) + updateAmt;
+            if(newDefRating > 100){
+                newDefRating = 100
+            }else if(newDefRating < 50){
+                newDefRating = 50
+            }
+
+            self.defense_rating = newDefRating
         }
     
     }
     private func updateGoalkeeperRating(updateAmt : Float){
         let realm = try! Realm()
         try! realm.write {
+            var newGKRating = Float(goalkeeper_rating) + updateAmt;
+            if(newGKRating > 100){
+                newGKRating = 100
+            }else if(newGKRating < 50){
+                newGKRating = 50
+            }
 
-            self.goalkeeper_rating = Float(self.goalkeeper_rating) + updateAmt
+            self.goalkeeper_rating = newGKRating
         }
     }
     
-    //  Table functions
+    //  Table functions - Remove?
 //    func setMatchesPlayed(mp : Int){ self.matches_played = mp }
 //    func setTeamWins(wins : Int){ self.wins = wins }
 //    func setTeamLoses(loses : Int){ self.wins = loses }
@@ -174,6 +239,14 @@ class Team: Object {
         }
     }
     
+    func setPromotedBoolean(){
+        isPromoted = true;
+    }
+    
+    func setRelegatedBoolean(){
+        isRelegated = false;
+    }
+    
 //    func addLoss(){
 //        addMatchPlayed()
 //        self.loses = Int(loses) + 1
@@ -194,6 +267,8 @@ class Team: Object {
 //    }
 
     func resetTeamSeason(){
+        isPromoted = false
+        isRelegated = false
 //        setMatchesPlayed(0)
 //        setTeamWins(0)
 //        setTeamLoses(0)
@@ -211,6 +286,32 @@ class Team: Object {
         
     }
 
+    
+    func displayPlayers(){
+        print(name)
+        print("---Goalkeepers---")
+        for(var i = 0; i < mGoalkeepers.count; i++){
+            mGoalkeepers[i].displayPlayer()
+        }
+        print("")
+        print("---Defenders---")
+        for(var i = 0; i < mDefenders.count; i++){
+            mDefenders[i].displayPlayer()
+        }
+        print("")
+        print("---Midfielders---")
+        for(var i = 0; i < mMidfielders.count; i++){
+            mMidfielders[i].displayPlayer()
+        }
+        print("")
+        print("---Attackers---")
+        for(var i = 0; i < mAttackers.count; i++){
+            mAttackers[i].displayPlayer()
+        }
+                
+    }
+    
+
     func displayRatings(){
         print(name)
         print("Overall: " + String(self.overall_rating))
@@ -224,20 +325,31 @@ class Team: Object {
     //  For example, a team going from Premier League to championship will probably lose it's good players
     //  While a team getting promoted to the Prem will invest in good players, improving their maxAddition
     func transferBusiness(maxAdditon : Int, maxSubtraction : Int){
-        let atkImprovements = Float(arc4random_uniform(UInt32(maxAdditon)))
-        let atkDeficate = Float(arc4random_uniform(UInt32(maxSubtraction)))
+        var maximumAdditon = maxAdditon
+        var maximumSubtraction = maxSubtraction
+        
+        // Adjust max addition and subtraction if team is newly promoted or relegated
+        if(isPromoted){
+            maximumAdditon = maxAdditon + 3
+        }else if(isRelegated){
+            maximumSubtraction = maxSubtraction + 3
+        }
+        
+        
+        let atkImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
+        let atkDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
         let atkDif = -atkDeficate + atkImprovements;
         
-        let midImprovements = Float(arc4random_uniform(UInt32(maxAdditon)))
-        let midDeficate = Float(arc4random_uniform(UInt32(maxSubtraction)))
+        let midImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
+        let midDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
         let midDif = -midDeficate + midImprovements;
         
-        let defImprovements = Float(arc4random_uniform(UInt32(maxAdditon)))
-        let defDeficate = Float(arc4random_uniform(UInt32(maxSubtraction)))
+        let defImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
+        let defDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
         let defDif = -defDeficate + defImprovements;
         
-        let glkImprovements = Float(arc4random_uniform(UInt32(maxAdditon)))
-        let glkDeficate = Float(arc4random_uniform(UInt32(maxSubtraction)))
+        let glkImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
+        let glkDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
         let glkDif = -glkDeficate + glkImprovements;
         
         updateAttackRating(atkDif)

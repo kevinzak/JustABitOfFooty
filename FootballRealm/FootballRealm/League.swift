@@ -35,7 +35,7 @@ class League: Object {
     let mNewTeams = List<Team>()
 
     
-    convenience init(name : String, id : String, teams : List<Team>, promoted : Int, relegated : Int) {
+    convenience init(name : String, id : String, teams : List<Team>, promoted : Int, relegated : Int, maxTransferAmt : Int, minTransferAmt : Int) {
         self.init()
         self.name = name
         self.league_id = id
@@ -51,6 +51,8 @@ class League: Object {
         
         self.num_promoted = promoted
         self.num_relegated = relegated
+        self.maxTransfer = maxTransferAmt
+        self.minTransfer = minTransferAmt
         
         league_table = LeagueTable(teams: teams, league: name)
         league_table!.sortTable();
@@ -93,7 +95,7 @@ class League: Object {
             print("Teams promoted from " + name)
             for(var i = 0; i < teamsToPromote.count; i++){
                 teamsToPromote[i].addPromotion()
-                
+                teamsToPromote[i].setPromotedBoolean()
                 print(teamsToPromote[i].getName())
             }
             print()
@@ -120,6 +122,8 @@ class League: Object {
             print("Teams releated from " + name)
             for(var i = 0; i < teamsToRelegate.count; i++){
                 teamsToRelegate[i].addRelegation()
+                teamsToRelegate[i].setRelegatedBoolean()
+
                 print(teamsToRelegate[i].getName())
             }
             print()
@@ -169,15 +173,16 @@ class League: Object {
         relegateClubs()
     }
     
-    func resetSeason(){
+    func updateTeams(){
         let realm = try! Realm()
         try! realm.write(){
-
-        // Added promoted and relegated teams
+            
+            // Added promoted and relegated teams
             for(var i = 0; i < mNewTeams.count; i++){
                 mTeams.append(mNewTeams[i])
             }
-        
+            
+            
             mNewTeams.removeAll()
         }
         
@@ -185,7 +190,10 @@ class League: Object {
         mFixtureManager!.resetFixtures()
         
         league_table!.updateTeams(mTeams)
-        
+    }
+    
+    
+    func resetSeason(){
         for(var i = 0; i < mTeams.count; i++){
             mTeams[i].resetTeamSeason()
         }
@@ -203,6 +211,13 @@ class League: Object {
     }
     
     //   * * * * * DISPLAY FUNCTIONS * * * * *
+    
+    func displayTeamPlayers(){
+        for(var i = 0; i < mTeams.count; i++){
+            mTeams[i].displayPlayers()
+            print()
+        }
+    }
     
     func displayTeamRatings(){
         for(var i = 0; i < mTeams.count; i++){

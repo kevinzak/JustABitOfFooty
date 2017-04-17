@@ -98,10 +98,17 @@ class LeagueManager :NSObject {
         
         handleLeagueWinner()
         handlePromotionAndRelegation()
+        handleUpdateTeams()
+        handleTransferBusiness()
         resetSeason()
-        handleTransferBusiness();
+
     }
     
+    func handleUpdateTeams(){
+        for(var i = 0; i < mLeagues.count; i++){
+            mLeagues[i].updateTeams()
+        }
+    }
     
     func handleLeagueWinner(){
         for(var i = 0; i < mLeagues.count; i++){
@@ -114,7 +121,7 @@ class LeagueManager :NSObject {
             mLeagues[i].handlePromotionAndRelegation()
         }
     }
-    
+
     func handleTransferBusiness(){
         for(var i = 0; i < mLeagues.count; i++){
             mLeagues[i].handleTransferBusiness()
@@ -131,6 +138,12 @@ class LeagueManager :NSObject {
     func displayTeamRatings(){
         for(var i = 0; i < mLeagues.count; i++){
             mLeagues[i].displayTeamRatings()
+        }
+    }
+
+    func displayTeamPlayers(){
+        for(var i = 0; i < mLeagues.count; i++){
+            mLeagues[i].displayTeamPlayers()
         }
     }
 

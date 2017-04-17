@@ -61,6 +61,13 @@
                                     <action selector="displayTeamRatings" destination="BYZ-38-t0r" eventType="touchUpInside" id="AXg-k6-vrr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siy-hj-CTh">
+                                <rect key="frame" x="249" y="370" width="104" height="30"/>
+                                <state key="normal" title="Display Players"/>
+                                <connections>
+                                    <action selector="displayTeamPlayers" destination="BYZ-38-t0r" eventType="touchUpInside" id="I50-Eh-z7V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -70,6 +77,8 @@
                             <constraint firstItem="6pM-Qf-pPS" firstAttribute="centerX" secondItem="7S3-S2-arz" secondAttribute="centerX" id="KzF-Bb-Pur"/>
                             <constraint firstItem="6pM-Qf-pPS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="226" id="MJe-Fq-PTg"/>
                             <constraint firstItem="xWL-HR-MMH" firstAttribute="centerX" secondItem="Sz6-p7-Im0" secondAttribute="centerX" id="MKz-Qv-2w5"/>
+                            <constraint firstItem="siy-hj-CTh" firstAttribute="centerX" secondItem="xWL-HR-MMH" secondAttribute="centerX" id="PnN-NZ-ScH"/>
+                            <constraint firstItem="siy-hj-CTh" firstAttribute="top" secondItem="xWL-HR-MMH" secondAttribute="bottom" constant="8" id="SLG-fJ-mPP"/>
                             <constraint firstItem="7S3-S2-arz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TqZ-9U-WZ2"/>
                             <constraint firstItem="6pM-Qf-pPS" firstAttribute="top" secondItem="7S3-S2-arz" secondAttribute="bottom" constant="10" id="fHe-23-SIJ"/>
                             <constraint firstItem="VSJ-8N-KN6" firstAttribute="centerX" secondItem="6pM-Qf-pPS" secondAttribute="centerX" id="mNJ-W3-6YS"/>
