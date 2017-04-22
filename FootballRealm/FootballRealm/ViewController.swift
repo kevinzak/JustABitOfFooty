@@ -128,13 +128,6 @@ class ViewController: UIViewController {
             let newTeam = Team(name: teamNameList_LeagueTwo[i], attack: atk, midfield: mid, defense: def, goalkeeper: glk)
 
             teamListLeagueTwo.append(newTeam)
-            
-            print(teamListLeagueTwo[i].getName())
-            print(teamListLeagueTwo[i].getAttackRating())
-            print(teamListLeagueTwo[i].getMidfieldRating())
-            print(teamListLeagueTwo[i].getDefenseRating())
-            print(teamListLeagueTwo[i].getGoalkeeperRating())
-            
             try! realm.write {
                 realm.add(newTeam)
             }

@@ -66,8 +66,6 @@ class Team: Object {
         self.defense_rating = defense
         self.goalkeeper_rating = goalkeeper
         
-        self.overall_rating = (Float(self.attack_rating) + Float(self.midfield_rating) + Float(self.defense_rating) + Float(self.goalkeeper_rating))/4
-        
         generateTeam()
     }
     
@@ -78,22 +76,43 @@ class Team: Object {
         mAttackers = PlayerFactory.sharedInstance.generateAttackers() // Generate with default amount
         
         print(name + "'s generated team")
-        
+        var goalkeeperRating :Float = 0.0
+        var defenderRating :Float = 0.0
+        var midfielderRating :Float = 0.0
+        var attackerRating :Float = 0.0
+
         for(var i = 0; i < mGoalkeepers.count; i++){
             mGoalkeepers[i].displayPlayer()
+            goalkeeperRating += mGoalkeepers[i].getRating()
         }
-
+        
+        self.goalkeeper_rating = goalkeeperRating/Float(mGoalkeepers.count)
+        
         for(var i = 0; i < mDefenders.count; i++){
             mDefenders[i].displayPlayer()
+            defenderRating += mDefenders[i].getRating()
+
         }
+        self.defense_rating = defenderRating/Float(mDefenders.count)
+
         for(var i = 0; i < mMidfielders.count; i++){
             mMidfielders[i].displayPlayer()
+            midfielderRating += mMidfielders[i].getRating()
         }
+        self.midfield_rating = midfielderRating/Float(mMidfielders.count)
+        
         for(var i = 0; i < mAttackers.count; i++){
             mAttackers[i].displayPlayer()
+            attackerRating += mAttackers[i].getRating()
         }
+        self.attack_rating = attackerRating/Float(mAttackers.count)
+        
         print()
+        displayRatings()
         print()
+        
+        self.overall_rating = (Float(self.attack_rating) + Float(self.midfield_rating) + Float(self.defense_rating) + Float(self.goalkeeper_rating))/4
+
 
     }
     

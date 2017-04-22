@@ -24,7 +24,8 @@ class Player: Object {
 
 
     dynamic var happiness: Float = 80.0
-    
+    dynamic var rating: Float = 0.0
+
     // Trait variables
     dynamic var hotheaded : Bool = false
     dynamic var oneClubMan : Bool = false
@@ -45,8 +46,6 @@ class Player: Object {
 
 
 
-
-    dynamic var rating: Float = 0.0
 //   dynamic var midfield_rating: Float = 0.0
 //   dynamic var defense_rating: Float = 0.0
 //  dynamic var goalkeeper_rating: Float = 0.0
@@ -80,8 +79,20 @@ class Player: Object {
             self.nid = firstName + "_" + surname 
         }
     }
+    
+    
+    // Getters
+    func getRating()->Float{
+        return self.rating
+    }
 
     
+    func getHappiness()->Float{
+        return self.happiness
+    }
+    
+    
+    // Display functions
     func displayPlayer(){
         print(firstName + " " + lastName)
         print(position)
