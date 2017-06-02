@@ -14,6 +14,9 @@
 		758B5FE61E78CC6100AFA60F /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758B5FE51E78CC6100AFA60F /* Fixture.swift */; };
 		75AF71DE1EA4F87F0003AEC9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF71DD1EA4F87F0003AEC9 /* Player.swift */; };
 		75AF71E21EA544AC0003AEC9 /* PlayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF71E11EA544AC0003AEC9 /* PlayerFactory.swift */; };
+		75AF71E41EAB9C1D0003AEC9 /* TeamCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF71E31EAB9C1D0003AEC9 /* TeamCreationViewController.swift */; };
+		75CA68301ED09BAE00CE7B32 /* LocationSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA682F1ED09BAE00CE7B32 /* LocationSelectionViewController.swift */; };
+		75CA68321ED09EF300CE7B32 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA68311ED09EF300CE7B32 /* LocationModel.swift */; };
 		75DA82021DE27A1300BA20DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DA82011DE27A1300BA20DE /* AppDelegate.swift */; };
 		75DA82041DE27A1300BA20DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DA82031DE27A1300BA20DE /* ViewController.swift */; };
 		75DA82071DE27A1300BA20DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DA82051DE27A1300BA20DE /* Main.storyboard */; };
@@ -70,6 +73,9 @@
 		758B5FE51E78CC6100AFA60F /* Fixture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
 		75AF71DD1EA4F87F0003AEC9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		75AF71E11EA544AC0003AEC9 /* PlayerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFactory.swift; sourceTree = "<group>"; };
+		75AF71E31EAB9C1D0003AEC9 /* TeamCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamCreationViewController.swift; sourceTree = "<group>"; };
+		75CA682F1ED09BAE00CE7B32 /* LocationSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelectionViewController.swift; sourceTree = "<group>"; };
+		75CA68311ED09EF300CE7B32 /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		75DA81FE1DE27A1200BA20DE /* FootballRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootballRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75DA82011DE27A1300BA20DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75DA82031DE27A1300BA20DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +164,9 @@
 				758B5FE51E78CC6100AFA60F /* Fixture.swift */,
 				75AF71DD1EA4F87F0003AEC9 /* Player.swift */,
 				75AF71E11EA544AC0003AEC9 /* PlayerFactory.swift */,
+				75AF71E31EAB9C1D0003AEC9 /* TeamCreationViewController.swift */,
+				75CA682F1ED09BAE00CE7B32 /* LocationSelectionViewController.swift */,
+				75CA68311ED09EF300CE7B32 /* LocationModel.swift */,
 			);
 			path = FootballRealm;
 			sourceTree = "<group>";
@@ -329,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75AF71E41EAB9C1D0003AEC9 /* TeamCreationViewController.swift in Sources */,
 				75AF71DE1EA4F87F0003AEC9 /* Player.swift in Sources */,
 				7559ACF51DE62FEC00E7C55B /* LeagueManager.swift in Sources */,
 				75DA82331DE27A2000BA20DE /* Team.swift in Sources */,
@@ -336,10 +346,12 @@
 				75DA82041DE27A1300BA20DE /* ViewController.swift in Sources */,
 				75DA82021DE27A1300BA20DE /* AppDelegate.swift in Sources */,
 				7559ACF71DE6315C00E7C55B /* LeagueTable.swift in Sources */,
+				75CA68301ED09BAE00CE7B32 /* LocationSelectionViewController.swift in Sources */,
 				7559ACF91DE631B200E7C55B /* LeagueTableData.swift in Sources */,
 				758B5FE41E78CB9800AFA60F /* FixtureManager.swift in Sources */,
 				758B5FE61E78CC6100AFA60F /* Fixture.swift in Sources */,
 				75DA823D1DE284B600BA20DE /* League.swift in Sources */,
+				75CA68321ED09EF300CE7B32 /* LocationModel.swift in Sources */,
 				75DA820A1DE27A1300BA20DE /* FootballRealm.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,6 +16,7 @@ class Team: Object {
 //  override static func ignoredProperties() -> [String] {
 //    return []
 //  }
+    
     dynamic var name: String = ""
     dynamic var nid: String = ""
     dynamic var attack_rating: Float = 0.0
@@ -24,6 +25,7 @@ class Team: Object {
     dynamic var goalkeeper_rating: Float = 0.0
     dynamic var overall_rating: Float = 0.0
     dynamic var league_id: String = ""
+    dynamic var type: String = ""
     
 //    dynamic private var wins: Int = 0
 //    dynamic private var draws: Int = 0

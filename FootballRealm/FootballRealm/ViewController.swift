@@ -75,6 +75,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        generateLocations()
         generateTeams()
         generateLeagues()
         // Creates a new League Manager each time. League Manager loads the leagues 
@@ -86,10 +87,42 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // Industrial (yards) (road) (court), affluent (bridge?) (court) (way) (street), residential (road) (cottage) (lane) (way)  (street), swamplands (moor), countryside (grounds) (meadow) (grove), forrested area, park area (park) (grove)
+    
+    func generateLocations(){
+        let realm = try! Realm()
+        let locations = realm.objects(LocationModel.self)
+        if(locations.count == 0){
+            let location_1 = LocationModel(name: "Hampton Yard",type: "Industrial",area: 10.0, pitch: 30.0,access: 20.0)
+            let location_2 = LocationModel(name: "Sutton Road",type: "Industrial",area: 15.0, pitch: 20.0,access: 15.0)
+            let location_3 = LocationModel(name: "James Court",type: "Affluent",area: 40.0, pitch: 30.0, access: 20.0)
+            let location_4 = LocationModel(name: "Smithwick Lane",type: "Residential",area: 15.0, pitch: 15.0,access: 10.0)
+            let location_5 = LocationModel(name: "Ashburton",type: "Residential",area: 30.0, pitch: 20.0,access: 15.0)
+            let location_6 = LocationModel(name: "Tulip Court Road",type: "Residential",area: 25.0, pitch: 30.0,access: 20.0)
+            let location_7 = LocationModel(name: "Bernshire Moor",type: "Countryside",area: 15.0, pitch: 15.0,access: 10.0)
+            let location_8 = LocationModel(name: "Stafferd Ground",type: "Countryside",area: 20.0, pitch: 20.0,access: 15.0)
+            let location_9 = LocationModel(name: "Sheffton Park",type: "Park",area: 25.0, pitch: 30.0,access: 25.0)
+            let location_10 = LocationModel(name: "Windtree Grove",type: "Park",area: 20.0, pitch: 40.0, access: 15.0)
+        
+            try! realm.write {
+                realm.add(location_1)
+                realm.add(location_2)
+                realm.add(location_3)
+                realm.add(location_4)
+                realm.add(location_5)
+                realm.add(location_6)
+                realm.add(location_7)
+                realm.add(location_8)
+                realm.add(location_9)
+                realm.add(location_10)
+            }
+        }else{
+            print("already have locations")
+        }
 
-    
-    
-    
+    }
+
     func generateTeams(){
         let realm = try! Realm()
         let teams = realm.objects(Team.self)
