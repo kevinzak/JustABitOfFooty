@@ -12,6 +12,7 @@ import RealmSwift
 class LocationSelectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var ViewControllerTitleLabel: UILabel!
+    @IBOutlet weak var continueBtn: UIButton!
 
     var locationCollectionView : UICollectionView!
 
@@ -33,7 +34,8 @@ class LocationSelectionViewController: UIViewController, UICollectionViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        continueBtn.enabled = false
+        continueBtn.hidden = true
         // Do any additional setup after loading the view.
         let realm = try! Realm()
         let locs = realm.objects(LocationModel.self)
@@ -230,6 +232,10 @@ class LocationSelectionViewController: UIViewController, UICollectionViewDelegat
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
+        // If selected cell, enable continue button
+        continueBtn.enabled = true
+        continueBtn.hidden = false
+
         collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.redColor()
         setData(locations[indexPath.item]);
     }

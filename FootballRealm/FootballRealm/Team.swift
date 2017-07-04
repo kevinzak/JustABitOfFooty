@@ -56,12 +56,12 @@ class Team: Object {
     }
 
     
-    convenience init(name : String, attack : Float, midfield : Float, defense : Float, goalkeeper : Float){
+    convenience init(id : String, name : String, attack : Float, midfield : Float, defense : Float, goalkeeper : Float){
         self.init()
         populateData()
         
         self.name = name
-        self.nid = name
+        self.nid = id
         
         self.attack_rating = attack
         self.midfield_rating = midfield
@@ -108,12 +108,14 @@ class Team: Object {
             attackerRating += mAttackers[i].getRating()
         }
         self.attack_rating = attackerRating/Float(mAttackers.count)
-        
+
+
+        self.overall_rating = (Float(self.attack_rating) + Float(self.midfield_rating) + Float(self.defense_rating) + Float(self.goalkeeper_rating))/4
+
         print()
         displayRatings()
         print()
         
-        self.overall_rating = (Float(self.attack_rating) + Float(self.midfield_rating) + Float(self.defense_rating) + Float(self.goalkeeper_rating))/4
 
 
     }
@@ -332,7 +334,6 @@ class Team: Object {
                 
     }
     
-
     func displayRatings(){
         print(name)
         print("Overall: " + String(self.overall_rating))

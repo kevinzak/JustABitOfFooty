@@ -51,7 +51,7 @@ class LeagueTable: Object {
         let teamData = realm.objects(LeagueTableData.self).filter("leagueId == '" + leagueId + "'").sorted("points", ascending: false)
         
         for(var i = 0; i < teamData.count; i++){
-            print(teamData[i].getTeamId())
+            print(teamData[i].getTeamName())
             print(teamData[i].getPoints())
         }
         
@@ -62,6 +62,14 @@ class LeagueTable: Object {
         let realm = try! Realm()
         let teamData = realm.objects(LeagueTableData.self).filter("leagueId == '" + leagueId + "'").sorted("points", ascending: false).first
 
+        return (teamData?.getTeamName())!
+    }
+
+    
+    func getLeagueLeadersId()->String{
+        let realm = try! Realm()
+        let teamData = realm.objects(LeagueTableData.self).filter("leagueId == '" + leagueId + "'").sorted("points", ascending: false).first
+        
         return (teamData?.getTeamId())!
     }
 

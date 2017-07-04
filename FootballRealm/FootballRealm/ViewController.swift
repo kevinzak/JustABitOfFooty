@@ -18,7 +18,9 @@ class ViewController: UIViewController {
     var teamList = List<Team>()
     var teamListLeagueTwo = List<Team>()
     
-    var mLeagueManager : LeagueManager!
+    @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var createClubButton: UIButton!
+    
     let letters : NSString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
     var teamNameList : [String] = [
@@ -44,6 +46,7 @@ class ViewController: UIViewController {
         "West Ham"
     ]
     
+    // Has only 23 teams to leave room for created club
     var teamNameList_LeagueTwo : [String] = [
         "Hull City",
         "Brighton",
@@ -66,7 +69,6 @@ class ViewController: UIViewController {
         "Charlton",
         "Preston",
         "Huddersfield",
-        "MK Dons",
         "Rotherham",
         "Bolton"
     ]
@@ -78,9 +80,18 @@ class ViewController: UIViewController {
         generateLocations()
         generateTeams()
         generateLeagues()
-        // Creates a new League Manager each time. League Manager loads the leagues 
-        // from Realm in its constructor and treats them as local instances essentailly
-        mLeagueManager = LeagueManager()
+        let realm = try! Realm()
+        let userTeam = realm.objects(Team.self).filter("nid == 'user'")
+        // If we have a created team 
+        
+        if(userTeam.count == 0){
+            continueButton.enabled = false
+            continueButton.hidden = true
+            
+        }else{
+            createClubButton.enabled = false
+            createClubButton.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -129,14 +140,14 @@ class ViewController: UIViewController {
         if(teams.count == 0){
             
         // Generates Arsenal as perfect
-        teamList.append(Team(name: teamNameList[0], attack: 100, midfield: 100, defense: 100, goalkeeper: 100))
+            teamList.append(Team(id:teamNameList[0], name: teamNameList[0], attack: 100, midfield: 100, defense: 100, goalkeeper: 100))
         // Generate rest of Premier League clubs
         for(var i = 1; i < teamNameList.count; i++){
             let atk = Float(arc4random_uniform(50) + 50)
             let mid = Float(arc4random_uniform(50) + 50)
             let def = Float(arc4random_uniform(50) + 50)
             let glk = Float(arc4random_uniform(50) + 50)
-            let newTeam = Team(name: teamNameList[i], attack: atk, midfield: mid, defense: def, goalkeeper: glk)
+            let newTeam = Team(id: teamNameList[i], name: teamNameList[i], attack: atk, midfield: mid, defense: def, goalkeeper: glk)
             teamList.append(newTeam)
             
             print(teamList[i].getName())
@@ -152,13 +163,14 @@ class ViewController: UIViewController {
         }
         
         // Generate second teir (Championship)
+        // Has only 23 teams to leave room for created club
         for(var i = 0; i < teamNameList_LeagueTwo.count; i++){
             let atk = Float(arc4random_uniform(50) + 25)
             let mid = Float(arc4random_uniform(50) + 25)
             let def = Float(arc4random_uniform(50) + 25)
             let glk = Float(arc4random_uniform(50) + 25)
             
-            let newTeam = Team(name: teamNameList_LeagueTwo[i], attack: atk, midfield: mid, defense: def, goalkeeper: glk)
+            let newTeam = Team(id: teamNameList_LeagueTwo[i], name: teamNameList_LeagueTwo[i], attack: atk, midfield: mid, defense: def, goalkeeper: glk)
 
             teamListLeagueTwo.append(newTeam)
             try! realm.write {
@@ -221,33 +233,9 @@ class ViewController: UIViewController {
     }
     
     func resetSeason(){
-        mLeagueManager?.resetSeason()
+        //mLeagueManager?.resetSeason()
     }
     
-    @IBAction func playGameWeek(){
-        mLeagueManager?.playNextGameWeek();
-    }
-    
-    @IBAction func playSeason(){
-        mLeagueManager?.playSeason()
-    }
-    
-    @IBAction func displayTable(){
-        mLeagueManager?.displayLeagueTables()
-    }
-    
-    @IBAction func displayTeamStats(){
-        mLeagueManager?.displayStats()
-    }
-    
-    @IBAction func displayTeamRatings(){
-        mLeagueManager?.displayTeamRatings()
-    }
-
-    @IBAction func displayTeamPlayers(){
-        mLeagueManager?.displayTeamPlayers()
-    }
-
     func randomStringWithLength (len : Int) -> NSString {
         
         let letters : NSString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

@@ -22,6 +22,7 @@ class LeagueTableData: Object
     //    dynamic var league_table: LeagueTable!
     //    dynamic var team: Team!
     dynamic var teamId = "";
+    dynamic var teamName = "";
     dynamic var leagueId = "";
 
     override static func primaryKey() -> String? {
@@ -32,6 +33,15 @@ class LeagueTableData: Object
         self.init()
         self.teamId = id
         self.leagueId = league
+
+        let realm = try! Realm()
+        let teams = realm.objects(Team.self).filter("nid == '" + teamId + "'")
+        if(teams.count != 0){
+            teamName = teams[0].getName()
+        }else{
+            teamName = teamId
+        }
+        
         self.matches_played = 0
         self.wins = 0
         self.loses = 0
@@ -50,7 +60,7 @@ class LeagueTableData: Object
     func setTeamGoalsAgainst(ga : Int){ self.goals_against = ga }
     func setTeamPoints(pts : Int){ self.points = pts }
     
-    //    func getTeamName()->String{ return team.getName() }
+    func getTeamName()->String{ return self.teamName }
     func getTeamId()->String{ return self.teamId }
     //    func getTeam()->Team{ return team }
     func getMatchesPlayed()->Int{ return Int(self.matches_played); }

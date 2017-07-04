@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import RealmSwift
 
-class TeamCreationViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
+class TeamCreationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UITextViewDelegate  {
 
+    @IBOutlet weak var continueBtn: UIButton!
+    @IBOutlet weak var clubNameTextView: UITextField!
     @IBOutlet weak var rootPicker: UIPickerView!
+    
     var pickerData: [String] = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        clubNameTextView.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+
         rootPicker.dataSource = self
         rootPicker.delegate = self
         pickerData = ["Working Club", "Parish Club", "Athletic Club", "Wealthy Club", "Royalty Club", "Community/Local Club" ]
@@ -68,5 +74,34 @@ class TeamCreationViewController: ViewController, UIPickerViewDelegate, UIPicker
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func textFieldDidChange(textField: UITextField){
+        if(textField.text != ""){
+            continueBtn.enabled = true
+        }else{
+            continueBtn.enabled = false
+        }
+    }
+    
+    @IBAction func finishedCreatingTeam(){
+        let realm = try! Realm()
+
+        let atk = Float(arc4random_uniform(50) + 50)
+        let mid = Float(arc4random_uniform(50) + 50)
+        let def = Float(arc4random_uniform(50) + 50)
+        let glk = Float(arc4random_uniform(50) + 50)
+
+        let team = Team(id: "user", name: clubNameTextView.text!, attack: atk, midfield: mid, defense: def, goalkeeper: glk  )
+        
+        try! realm.write {
+            realm.add(team)
+        }
+        
+        let leagues = realm.objects(League.self).filter("league_id == 'Eng_1'")
+        if(leagues.count != 0){
+            leagues[0].acceptNewTeams([team])
+            leagues[0].updateTeams()
+        }
+    }
 
 }

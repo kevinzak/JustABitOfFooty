@@ -58,6 +58,7 @@ class League: Object {
         league_table!.sortTable();
 //        displayTable()
 
+        
         mFixtureManager = FixtureManager(teams: teams, id: id)
         try! realm.write {
             realm.add(mFixtureManager!)

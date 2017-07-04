@@ -26,8 +26,9 @@ class Fixture: Object {
     dynamic var homeTeamId : String?
     dynamic var awayTeamId : String?
 
-//    dynamic var homeTeam : Team?
-//    dynamic var awayTeam : Team?
+    dynamic var homeTeamDisplayName : String?
+    dynamic var awayTeamDisplayName : String?
+    
     dynamic var winningTeam : Team?
     dynamic var losingTeam : Team?
     
@@ -47,6 +48,10 @@ class Fixture: Object {
         self.leagueId = id
         self.homeTeamId = home.getId()
         self.awayTeamId = away.getId()
+        
+        self.homeTeamDisplayName = home.getName()
+        self.awayTeamDisplayName = away.getName()
+
         self.fixtureId = home.getId() + "_" + away.getId() + "_" + id + "_" + String(week)
     }
     
@@ -82,8 +87,8 @@ class Fixture: Object {
     }
     
     func printFixture(){
-        var homeString = "Home: " + homeTeamId!
-        var awayString = "Away: " + awayTeamId!
+        var homeString = "Home: " + homeTeamDisplayName!
+        var awayString = "Away: " + awayTeamDisplayName!
 
         if(homeGoals != -1){
             homeString = homeString  + " - " + String(homeGoals)

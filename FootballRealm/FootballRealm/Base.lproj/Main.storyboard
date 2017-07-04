@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oud-dm-CZd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EHf-84-oKt">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,9 +7,63 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="eIj-Uj-be0">
+            <objects>
+                <viewController id="EHf-84-oKt" customClass="ViewController" customModule="FootballRealm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fow-2p-f5s"/>
+                        <viewControllerLayoutGuide type="bottom" id="mRc-XB-LEy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vpt-o4-4v6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ov9-4W-poW">
+                                <rect key="frame" x="333" y="82" width="82" height="30"/>
+                                <state key="normal" title="Create Club"/>
+                                <connections>
+                                    <segue destination="oud-dm-CZd" kind="show" id="mFa-0F-qKl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTy-dC-Ogo">
+                                <rect key="frame" x="376" y="152" width="62" height="30"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="syo-an-V8k"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NTy-dC-Ogo" firstAttribute="centerX" secondItem="Vpt-o4-4v6" secondAttribute="centerX" id="10g-Hk-V5G"/>
+                            <constraint firstItem="mRc-XB-LEy" firstAttribute="top" secondItem="Ov9-4W-poW" secondAttribute="bottom" constant="50" id="V2G-bF-Pp1"/>
+                            <constraint firstItem="NTy-dC-Ogo" firstAttribute="top" secondItem="Ov9-4W-poW" secondAttribute="bottom" id="c2K-ZB-vEB"/>
+                            <constraint firstItem="Ov9-4W-poW" firstAttribute="top" secondItem="fow-2p-f5s" secondAttribute="bottom" constant="75" id="kTE-LL-ZO2"/>
+                            <constraint firstItem="NTy-dC-Ogo" firstAttribute="leading" secondItem="Ov9-4W-poW" secondAttribute="trailing" id="leO-yL-ZFi"/>
+                            <constraint firstItem="mRc-XB-LEy" firstAttribute="top" secondItem="NTy-dC-Ogo" secondAttribute="bottom" constant="50" id="sbm-GW-Db7"/>
+                            <constraint firstItem="Ov9-4W-poW" firstAttribute="centerX" secondItem="Vpt-o4-4v6" secondAttribute="centerX" id="uNb-lx-KHa"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="kTE-LL-ZO2"/>
+                                <exclude reference="c2K-ZB-vEB"/>
+                                <exclude reference="leO-yL-ZFi"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="NTy-dC-Ogo" id="t1m-T1-991"/>
+                        <outlet property="createClubButton" destination="Ov9-4W-poW" id="fQx-aP-sgm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OO8-29-MbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-764" y="270"/>
+        </scene>
+        <!--Main Club View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FootballRealm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainClubViewControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainClubViewController" customModule="FootballRealm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -96,12 +150,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="23" y="-66"/>
+            <point key="canvasLocation" x="1507" y="-42"/>
         </scene>
         <!--Team Creation View Controller-->
         <scene sceneID="1t5-Mg-EHD">
             <objects>
-                <viewController id="oud-dm-CZd" customClass="TeamCreationViewController" customModule="FootballRealm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamCreationViewControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oud-dm-CZd" customClass="TeamCreationViewController" customModule="FootballRealm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RcF-7j-W9p"/>
                         <viewControllerLayoutGuide type="bottom" id="j4m-dI-jIs"/>
@@ -140,7 +194,8 @@
                                 <rect key="frame" x="-50" y="222" width="210" height="30"/>
                                 <state key="normal" title="Continue to Location Selection"/>
                                 <connections>
-                                    <segue destination="A90-hx-CXx" kind="show" id="Ueh-Oj-CNi"/>
+                                    <action selector="finishedCreatingTeam" destination="oud-dm-CZd" eventType="touchUpInside" id="8Jn-GZ-8fK"/>
+                                    <segue destination="A90-hx-CXx" kind="show" id="83W-ea-gX9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -168,6 +223,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="clubNameTextView" destination="cUl-0t-Sl4" id="Rfz-lw-R0U"/>
+                        <outlet property="continueBtn" destination="XKq-Rv-QZ5" id="dHU-GR-kCS"/>
                         <outlet property="rootPicker" destination="N7A-b0-wt1" id="SOB-YW-YqG"/>
                     </connections>
                 </viewController>
@@ -193,12 +250,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9AY-jb-3sb">
+                                <rect key="frame" x="261" y="414" width="62" height="30"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="48C-Ub-Ys9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="W6Z-3X-XBN" firstAttribute="centerX" secondItem="GW8-GM-7lK" secondAttribute="centerX" id="A8c-Uk-KHr"/>
                             <constraint firstItem="W6Z-3X-XBN" firstAttribute="centerY" secondItem="GW8-GM-7lK" secondAttribute="centerY" id="QdM-au-KfD"/>
+                            <constraint firstItem="wD6-0z-Zfx" firstAttribute="top" secondItem="9AY-jb-3sb" secondAttribute="bottom" constant="50" id="UT7-M3-xPi"/>
                             <constraint firstItem="W6Z-3X-XBN" firstAttribute="top" secondItem="7b5-pA-J1K" secondAttribute="bottom" constant="25" id="mEd-zp-6Hs"/>
+                            <constraint firstItem="9AY-jb-3sb" firstAttribute="centerX" secondItem="GW8-GM-7lK" secondAttribute="centerX" id="oFi-j3-iG0"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -208,44 +274,15 @@
                     </view>
                     <connections>
                         <outlet property="ViewControllerTitleLabel" destination="W6Z-3X-XBN" id="Jaz-XK-leg"/>
+                        <outlet property="continueBtn" destination="9AY-jb-3sb" id="xfG-PU-wSb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0j-A3-0Ue" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="777" y="595"/>
         </scene>
-        <!--Collection View Controller-->
-        <scene sceneID="pxq-Kj-iuN">
-            <objects>
-                <collectionViewController id="7R3-7s-Yi0" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="pJ7-hR-yvl">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HF6-fB-fl4">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="f3g-Pr-QvM">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="7R3-7s-Yi0" id="4Jc-r2-U2Q"/>
-                            <outlet property="delegate" destination="7R3-7s-Yi0" id="02t-sH-0nf"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7bl-eA-HKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="48C-Ub-Ys9"/>
+    </inferredMetricsTieBreakers>
 </document>
