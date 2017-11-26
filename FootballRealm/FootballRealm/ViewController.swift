@@ -140,7 +140,7 @@ class ViewController: UIViewController {
         if(teams.count == 0){
             
         // Generates Arsenal as perfect
-            teamList.append(Team(id:teamNameList[0], name: teamNameList[0], attack: 100, midfield: 100, defense: 100, goalkeeper: 100))
+            teamList.append(Team(id:teamNameList[0] + "_ID", name: teamNameList[0], attack: 100, midfield: 100, defense: 100, goalkeeper: 100))
         // Generate rest of Premier League clubs
         for(var i = 1; i < teamNameList.count; i++){
             let atk = Float(arc4random_uniform(50) + 50)

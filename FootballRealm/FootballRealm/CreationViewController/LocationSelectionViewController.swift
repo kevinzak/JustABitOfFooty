@@ -30,7 +30,8 @@ class LocationSelectionViewController: UIViewController, UICollectionViewDelegat
     var kAreaLbl : UILabel = UILabel()
 
     // List of locations
-    var locations : [LocationModel] = []
+    var mLocations : [LocationModel] = []
+    var mSelectedLocationIndex : Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class LocationSelectionViewController: UIViewController, UICollectionViewDelegat
         let realm = try! Realm()
         let locs = realm.objects(LocationModel.self)
         for location in locs{
-            locations.append(location)
+            mLocations.append(location)
         }
         
         var flowLayout = UICollectionViewFlowLayout()
@@ -173,18 +174,14 @@ class LocationSelectionViewController: UIViewController, UICollectionViewDelegat
         view.addConstraint(pitchContraint)
         view.addConstraint(accessContraint)
         view.addConstraint(areaContraint)
-
-
-        
     }
     
-    func setData(location: LocationModel){
+    func updateLabelsWithLocationData(location: LocationModel){
         mNameLbl.text = location.getName()
         mTypeLbl.text = location.getType()
         mPitchLbl.text = String(location.getPitchQuality())
         mAccessLbl.text = String(location.getAccessibility())
         mAreaLbl.text = String(location.getAreaDesirability())
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -206,7 +203,7 @@ class LocationSelectionViewController: UIViewController, UICollectionViewDelegat
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return locations.count
+        return mLocations.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
@@ -237,11 +234,33 @@ class LocationSelectionViewController: UIViewController, UICollectionViewDelegat
         continueBtn.hidden = false
 
         collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.redColor()
-        setData(locations[indexPath.item]);
+        mSelectedLocationIndex = indexPath.item
+        updateLabelsWithLocationData(mLocations[indexPath.item])
     }
 
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath){
         collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.blueColor()
+    }
+    
+    @IBAction func continueButtonAction(){
+        let realm = try! Realm()
+
+        // Find user team and update their data model with selected location model
+        let userTeam = realm.objects(Team.self).filter("nid == 'user'")
+        var team : Team!
+        if(userTeam.count != 0){
+            try! realm.write {
+                team = userTeam[0]
+                if(mSelectedLocationIndex >= 0){
+                    team.setGround(mLocations[mSelectedLocationIndex])
+                }else{
+                    team.setGround(mLocations[0])
+                }
+                realm.add(team)
+            }
+        }else{
+            print("LocationSelectionViewController::setData - ERROR: Could not find user team when setting location model")
+        }
     }
 
 }

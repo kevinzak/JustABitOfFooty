@@ -17,24 +17,34 @@ class Team: Object {
 //    return []
 //  }
     
-    dynamic var name: String = ""
+    // Team Properties
     dynamic var nid: String = ""
+    dynamic var name: String = ""
+    dynamic var city: String = "Test City"
+    dynamic var type: String = ""
+
+    // Location (ground)
+    dynamic var mGround : LocationModel!
+    
+    // League Properties
+    dynamic var league_id: String = ""
+    
+    // Ratings
     dynamic var attack_rating: Float = 0.0
     dynamic var midfield_rating: Float = 0.0
     dynamic var defense_rating: Float = 0.0
     dynamic var goalkeeper_rating: Float = 0.0
     dynamic var overall_rating: Float = 0.0
-    dynamic var league_id: String = ""
-    dynamic var type: String = ""
+    dynamic var home_advantage: Float = 5.0
     
-//    dynamic private var wins: Int = 0
-//    dynamic private var draws: Int = 0
-//    dynamic private var loses: Int = 0
-//    dynamic private var goals_against: Int = 0
-//    dynamic private var goals_for: Int = 0
-//    dynamic private var matches_played: Int = 0
-//    dynamic private var points: Int = 0
+    // Formation
+    dynamic private var mNumStartingGoalkeepers : Int = 1
+    dynamic private var mNumStartingDefenders : Int = 4
+    dynamic private var mNumStartingMidfielders : Int = 4
+    dynamic private var mNumStartingAttackers : Int = 2
     
+    
+    // Stats
     dynamic private var league_titles: Int = 0
     dynamic private var promotions: Int = 0
     dynamic private var relegations: Int = 0
@@ -44,17 +54,15 @@ class Team: Object {
     var                 isPromoted = false;
     var                 isRelegated = false;
     
+    // Players
     var mGoalkeepers = List<Player>()
     var mDefenders = List<Player>()
     var mMidfielders = List<Player>()
     var mAttackers = List<Player>()
     
-    
-    
     override static func primaryKey() -> String? {
         return "nid"
     }
-
     
     convenience init(id : String, name : String, attack : Float, midfield : Float, defense : Float, goalkeeper : Float){
         self.init()
@@ -83,13 +91,14 @@ class Team: Object {
         var midfielderRating :Float = 0.0
         var attackerRating :Float = 0.0
 
+        // Make Goalkeepers
         for(var i = 0; i < mGoalkeepers.count; i++){
             mGoalkeepers[i].displayPlayer()
             goalkeeperRating += mGoalkeepers[i].getRating()
         }
-        
         self.goalkeeper_rating = goalkeeperRating/Float(mGoalkeepers.count)
         
+        // Make Defenders
         for(var i = 0; i < mDefenders.count; i++){
             mDefenders[i].displayPlayer()
             defenderRating += mDefenders[i].getRating()
@@ -97,12 +106,14 @@ class Team: Object {
         }
         self.defense_rating = defenderRating/Float(mDefenders.count)
 
+        // Make Midfielders
         for(var i = 0; i < mMidfielders.count; i++){
             mMidfielders[i].displayPlayer()
             midfielderRating += mMidfielders[i].getRating()
         }
         self.midfield_rating = midfielderRating/Float(mMidfielders.count)
         
+        // Make Attackers
         for(var i = 0; i < mAttackers.count; i++){
             mAttackers[i].displayPlayer()
             attackerRating += mAttackers[i].getRating()
@@ -130,30 +141,58 @@ class Team: Object {
         self.defense_rating = 0.0;
         self.goalkeeper_rating = 0.0;
         
-//        self.matches_played = 0
-//        self.wins = 0
-//        self.loses = 0
-//        self.draws = 0
-//        self.goals_for = 0
-//        self.goals_against = 0
-//        self.points = 0
-        
         self.league_titles = 0
         self.promotions = 0
         self.relegations = 0
         
     }
     
+    
+    /* * * * * * * * * * * * * * */
+    /*          Getters          */
+    /* * * * * * * * * * * * * * */
+    // Get Club Properties
     func getName()->String { return name }
     func getId()->String { return nid }
+    func getCity()->String { return city }
+    func getClubType()->String { return type }
+
+    // Location Propertiers
+    func getGround()->LocationModel{ return mGround; }
+    func getGroundName()->String{ return mGround.getName(); }
+    func getGroundId()->String{ return mGround.getId(); }
+    func getGroundType()->String{ return mGround.getType(); }
+    func getGroundPitchQuality()->Float{ return mGround.getPitchQuality(); }
+    func getGroundAccessibility()->Float{ return mGround.getAccessibility(); }
+    func getGroundAreaDesirability()->Float{ return mGround.getAreaDesirability(); }
+    
+    // Get League Properties
+    func getLeagueId()->String { return league_id }
+    
+    // Get Ratings
     func getOverallRating()->Float { return Float(self.overall_rating) }
     func getAttackRating()->Float { return Float(attack_rating) }
     func getMidfieldRating()->Float { return Float(midfield_rating) }
     func getDefenseRating()->Float { return Float(defense_rating) }
     func getGoalkeeperRating()->Float { return Float(goalkeeper_rating) }
+    func getHomeAdvantage()->Float { return Float(home_advantage) }
     
+    /* * * * * * * * * * * * * * */
+    /*          Setters          */
+    /* * * * * * * * * * * * * * */
+    // Set Club Properties
     func setTeamName(name : String) { self.name = name }
-    func setId(tId : String) { nid = tId }
+    func setTeamId(tId : String) { self.nid = tId }
+    func setTeamCity(cityName : String) { self.city = cityName}
+    func setTeamType(clubType : String) { self.type = clubType }
+    
+    // Set Ground Properties
+    func setGround(ground : LocationModel) { self.mGround = ground; }
+
+    // Set League Properties
+    func setLeagueId(league : String) { self.league_id = league }
+
+    // Set ratings
     func setAttackRating(attack : Float) { self.attack_rating = attack }
     func setMidfieldRating(midfield : Float) { self.midfield_rating = midfield }
     func setDefenseRating(defense : Float) { self.defense_rating = defense }
@@ -162,7 +201,11 @@ class Team: Object {
     func setOverallRating() {
         self.overall_rating = (Float(self.attack_rating) + Float(self.midfield_rating) + Float(self.defense_rating) + Float(self.goalkeeper_rating))/4
     }
-
+    
+    
+    /* * * * * * * * * * * * * * */
+    /*      Update Functions     */
+    /* * * * * * * * * * * * * * */
     private func updateAttackRating(updateAmt : Float){
         let realm = try! Realm()
         try! realm.write {
@@ -204,6 +247,7 @@ class Team: Object {
         }
     
     }
+
     private func updateGoalkeeperRating(updateAmt : Float){
         let realm = try! Realm()
         try! realm.write {
@@ -218,29 +262,15 @@ class Team: Object {
         }
     }
     
-    //  Table functions - Remove?
-//    func setMatchesPlayed(mp : Int){ self.matches_played = mp }
-//    func setTeamWins(wins : Int){ self.wins = wins }
-//    func setTeamLoses(loses : Int){ self.wins = loses }
-//    func setTeamDraws(draws : Int){ self.draws = draws }
-//    func setTeamGoalsFor(gf : Int){ self.goals_for = gf }
-//    func setTeamGoalsAgainst(ga : Int){ self.goals_against = ga }
-//    func setTeamPoints(pts : Int){ self.points = pts }
     
-//    func getMatchesPlayed()->Int{ return Int(self.matches_played); }
-//    func getWins()->Int{ return Int(self.wins); }
-//    func getLoses()->Int{ return Int(loses); }
-//    func getDraws()->Int{ return Int(draws); }
-//    func getGoalsFor()->Int{ return Int(goals_for); }
-//    func getGoalsAgainst()->Int{ return Int(goals_against); }
-//    func getPoints()->Int{ return Int(points); }
-    
-//    func addMatchPlayed(){ self.matches_played = Int(matches_played) + 1 }
-//    func addGoalsFor(goals : Int){ self.goals_for = Int(goals_for) + goals }
-//    func addGoalsAgainst(goals : Int){ goals_against = Int(goals_against) + goals }
-//    func addPoints(pts : Int){ points = Int(points) + pts }
-    
+    /* * * * * * * * * * * * * * */
+    /*  Updating Stat Functions  */
+    /* * * * * * * * * * * * * * */
     // Adding stats
+    func addTrophy(){
+        
+    }
+    
     func addLeagueTitle(){
         let realm = try! Realm()
         try! realm.write {
@@ -269,38 +299,124 @@ class Team: Object {
     func setRelegatedBoolean(){
         isRelegated = false;
     }
-    
-//    func addLoss(){
-//        addMatchPlayed()
-//        self.loses = Int(loses) + 1
-//    }
-//    
-//    func addWin(){
-//        addMatchPlayed()
-//        self.wins = Int(wins) + 1
-//        addPoints(3)
-//        
-//    }
-//    
-//    func addDraw(){
-//        addMatchPlayed()
-//        self.draws = Int(draws) + 1
-//        addPoints(1)
-//
-//    }
 
     func resetTeamSeason(){
         isPromoted = false
         isRelegated = false
-//        setMatchesPlayed(0)
-//        setTeamWins(0)
-//        setTeamLoses(0)
-//        setTeamDraws(0)
-//        setTeamGoalsFor(0)
-//        setTeamGoalsAgainst(0)
-//        setTeamPoints(0)
+    }
+ 
+    
+    /* * * * * * * * * * * * * * */
+    /*     Transfer Functions    */
+    /* * * * * * * * * * * * * * */
+
+    //  Controlled by what league you're in and if you went from league to league
+    //  For example, a team going from Premier League to championship will probably lose it's good players
+    //  While a team getting promoted to the Prem will invest in good players, improving their maxAddition
+    func transferBusiness(maxAdditon : Int, maxSubtraction : Int){
+        var maximumAdditon = maxAdditon
+        var maximumSubtraction = maxSubtraction
+        
+        // Adjust max addition and subtraction if team is newly promoted or relegated
+        if(isPromoted){
+            maximumAdditon = maxAdditon + 3
+        }else if(isRelegated){
+            maximumSubtraction = maxSubtraction + 3
+        }
+        
+        
+        let atkImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
+        let atkDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
+        let atkDif = -atkDeficate + atkImprovements;
+        
+        let midImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
+        let midDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
+        let midDif = -midDeficate + midImprovements;
+        
+        let defImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
+        let defDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
+        let defDif = -defDeficate + defImprovements;
+        
+        let glkImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
+        let glkDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
+        let glkDif = -glkDeficate + glkImprovements;
+        
+        updateAttackRating(atkDif)
+        updateMidfieldkRating(midDif)
+        updateDefenseRating(defDif)
+        updateGoalkeeperRating(glkDif)
     }
     
+    // TODO: Update Staff?
+
+    
+    /* * * * * * * * * * * * * * */
+    /*     Match  Functions      */
+    /* * * * * * * * * * * * * * */
+    func getStartingKeepers()->[Player]{
+        let sortedKeepers = mGoalkeepers.sort { t1, t2 in
+            if t1.isAvailable() == t2.isAvailable() { return t1.rating > t2.rating }
+         
+            return t1.isAvailable() && !t2.isAvailable()
+        }
+        
+        var startingKeepers : [Player] = [];
+        for(var i = 0; i < mNumStartingGoalkeepers; i++){
+            startingKeepers.append(sortedKeepers[i])
+        }
+        
+        return startingKeepers;
+    }
+
+    func getStartingDefenders()->[Player]{
+        let sortedDefenders = mDefenders.sort { t1, t2 in
+            if t1.isAvailable() == t2.isAvailable() { return t1.rating > t2.rating }
+            
+            return t1.isAvailable() && !t2.isAvailable()
+        }
+
+        var startingDefenders : [Player] = [];
+        for(var i = 0; i < mNumStartingDefenders; i++){
+            startingDefenders.append(sortedDefenders[i])
+        }
+        
+        return startingDefenders;
+
+    }
+    
+    func getStartingMidfielders()->[Player]{
+        let sortedMidfielders = mMidfielders.sort { t1, t2 in
+            if t1.isAvailable() == t2.isAvailable() { return t1.rating > t2.rating }
+            
+            return t1.isAvailable() && !t2.isAvailable()
+        }
+
+        var startingMidfielders : [Player] = [];
+        for(var i = 0; i < mNumStartingMidfielders; i++){
+            startingMidfielders.append(sortedMidfielders[i])
+        }
+        
+        return startingMidfielders;
+    }
+    
+    func getStartingAttackers()->[Player]{
+        let sortedAttackers = mAttackers.sort { t1, t2 in
+            if t1.isAvailable() == t2.isAvailable() { return t1.rating > t2.rating }
+            
+            return t1.isAvailable() && !t2.isAvailable()
+        }
+        
+        var startingAttackers : [Player] = [];
+        for(var i = 0; i < mNumStartingAttackers; i++){
+            startingAttackers.append(sortedAttackers[i])
+        }
+        
+        return startingAttackers;
+    }
+
+    /* * * * * * * * * * * * * * */
+    /*     Display Functions     */
+    /* * * * * * * * * * * * * * */
     func displayStats(){
         print(name)
         print("League Titles: " + String(self.league_titles))
@@ -342,45 +458,6 @@ class Team: Object {
         print("MID: " + String(self.midfield_rating))
         print("ATTACK: " + String(self.attack_rating))        
     }
-
-    //  Controlled by what league you're in and if you went from league to league
-    //  For example, a team going from Premier League to championship will probably lose it's good players
-    //  While a team getting promoted to the Prem will invest in good players, improving their maxAddition
-    func transferBusiness(maxAdditon : Int, maxSubtraction : Int){
-        var maximumAdditon = maxAdditon
-        var maximumSubtraction = maxSubtraction
-        
-        // Adjust max addition and subtraction if team is newly promoted or relegated
-        if(isPromoted){
-            maximumAdditon = maxAdditon + 3
-        }else if(isRelegated){
-            maximumSubtraction = maxSubtraction + 3
-        }
-        
-        
-        let atkImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
-        let atkDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
-        let atkDif = -atkDeficate + atkImprovements;
-        
-        let midImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
-        let midDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
-        let midDif = -midDeficate + midImprovements;
-        
-        let defImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
-        let defDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
-        let defDif = -defDeficate + defImprovements;
-        
-        let glkImprovements = Float(arc4random_uniform(UInt32(maximumAdditon)))
-        let glkDeficate = Float(arc4random_uniform(UInt32(maximumSubtraction)))
-        let glkDif = -glkDeficate + glkImprovements;
-        
-        updateAttackRating(atkDif)
-        updateMidfieldkRating(midDif)
-        updateDefenseRating(defDif)
-        updateGoalkeeperRating(glkDif)
-    }
-    
-    // TODO: Update Staff?
 
 
 }

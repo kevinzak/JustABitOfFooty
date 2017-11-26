@@ -13,17 +13,19 @@ class TeamCreationViewController: UIViewController, UIPickerViewDelegate, UIPick
 
     @IBOutlet weak var continueBtn: UIButton!
     @IBOutlet weak var clubNameTextView: UITextField!
-    @IBOutlet weak var rootPicker: UIPickerView!
+//    @IBOutlet weak var rootPicker: UIPickerView!
     
     var pickerData: [String] = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         clubNameTextView.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
 
-        rootPicker.dataSource = self
-        rootPicker.delegate = self
-        pickerData = ["Working Club", "Parish Club", "Athletic Club", "Wealthy Club", "Royalty Club", "Community/Local Club" ]
-
+        let realm = try! Realm()
+        let userTeam = realm.objects(Team.self).filter("nid == 'user'")
+        // If we have a created team
+        if(userTeam.count != 0){
+            clubNameTextView.text = userTeam[0].getCity() + " FC";
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -85,23 +87,30 @@ class TeamCreationViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBAction func finishedCreatingTeam(){
         let realm = try! Realm()
+        let userTeam = realm.objects(Team.self).filter("nid == 'user'")
+        // If we have a created team
+        var team : Team!
+        if(userTeam.count != 0){
+            team = userTeam[0]
+            try! realm.write {
+                team.setTeamName(clubNameTextView.text!)
+                realm.add(team)
+            }
+            
+            
+            
+            // Done creating team, add them boys to the league and gen those fixtures
+            let leagues = realm.objects(League.self).filter("league_id == 'Eng_1'")
+            if(leagues.count != 0){
+                leagues[0].acceptNewTeams([team])
+                leagues[0].updateTeams()
+            }
 
-        let atk = Float(arc4random_uniform(50) + 50)
-        let mid = Float(arc4random_uniform(50) + 50)
-        let def = Float(arc4random_uniform(50) + 50)
-        let glk = Float(arc4random_uniform(50) + 50)
-
-        let team = Team(id: "user", name: clubNameTextView.text!, attack: atk, midfield: mid, defense: def, goalkeeper: glk  )
-        
-        try! realm.write {
-            realm.add(team)
+        }else{
+            print("TeamCreationViewController::setData - ERROR: Could not find user team when setting Club Name")
         }
         
-        let leagues = realm.objects(League.self).filter("league_id == 'Eng_1'")
-        if(leagues.count != 0){
-            leagues[0].acceptNewTeams([team])
-            leagues[0].updateTeams()
-        }
+        
     }
 
 }

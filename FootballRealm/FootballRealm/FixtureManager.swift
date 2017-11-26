@@ -40,6 +40,13 @@ class FixtureManager: Object {
     
     func updateTeams(teams : List<Team>){
         let realm = try! Realm()
+        print("Updating teams for " + leagueId)
+        for team in teams{
+            print(team.getName())
+        }
+        print("")
+
+        
         try! realm.write(){
             
             mTeams.removeAll()
@@ -166,13 +173,33 @@ class FixtureManager: Object {
     func resetFixtures(){
         let realm = try! Realm()
         var leagueFixtures = realm.objects(Fixture.self).filter("leagueId contains '" + leagueId + "'")
+        
         try! realm.write {
             currentWeek = 0
             realm.delete(leagueFixtures)
         }
-
         makeFixtures()
     }
 
+    
+    /* * * * * * * * * * * * * * */
+    /*     Display Functions     */
+    /* * * * * * * * * * * * * * */
+    
+    func printFixturesByTeam(id : String){
+        let realm = try! Realm()
+        var teamHomeFixtures = realm.objects(Fixture.self).filter("homeTeamId contains '" + id + "'")
+        var teamAwayFixtures = realm.objects(Fixture.self).filter("awayTeamId contains '" + id + "'")
+        
+        print("* " + id + " Fixtures *")
+        print("HOME FIXTURES: " + String(teamAwayFixtures.count))
+        for fixture in teamHomeFixtures{
+            fixture.printFixture()
+        }
+        print("AWAY FIXTURES: " + String(teamAwayFixtures.count))
+        for fixture in teamAwayFixtures{
+            fixture.printFixture()
+        }
+    }
     
 }

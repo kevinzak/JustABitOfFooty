@@ -28,7 +28,6 @@ class LeagueTable: Object {
         let realm = try! Realm()
 
         for team in teams{
-            print(team.getId())
             let leagueTableDataEntry = LeagueTableData(id: team.getId(), league: leagueId)
 
             try! realm.write {

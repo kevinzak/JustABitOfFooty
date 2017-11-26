@@ -86,48 +86,67 @@ class Fixture: Object {
         }
     }
     
-    func printFixture(){
-        var homeString = "Home: " + homeTeamDisplayName!
-        var awayString = "Away: " + awayTeamDisplayName!
-
-        if(homeGoals != -1){
-            homeString = homeString  + " - " + String(homeGoals)
-            awayString = awayString  + " - " + String(awayGoals)
-
-            print(homeString)
-            print(awayString)
-            print("")
-
-        }else{
-            print(homeString + " v. " + awayString)
-        }
-        
-    }
-    
-    
-    
-//    func getHomeTeam()-> Team{ return homeTeam! }
-//    func getAwayTeam()-> Team{ return awayTeam! }
-//    func getWinningTeam() -> Team { return winningTeam! }
-//    func getLosingTeam() -> Team { return losingTeam! }
-    
     func getResult()->FixtureResult{ return fixtureResult! }
     
     func getHomeScore()->Int { return homeGoals }
     func getAwayScore()->Int { return awayGoals }
     
     
+    /*
+    Attack
+    Midfield
+    Defense
+    OWN GOALS - 2%
+    */
+    
     private func playFixture(){
         let realm = try! Realm()
         let homeTeam = realm.objects(Team.self).filter("nid == '" + homeTeamId! + "'").first
         let awayTeam = realm.objects(Team.self).filter("nid == '" + awayTeamId! + "'").first
         
-
         // Gets the rating fo the teams for calculation
-        let homeOvr = homeTeam?.getOverallRating()
-        let awayOvr = awayTeam?.getOverallRating()
+        let homeAdv = (homeTeam?.getHomeAdvantage())!
+        let homeGlk = getPositionRating((homeTeam?.getStartingKeepers())!)
+        let awayGlk = getPositionRating((awayTeam?.getStartingKeepers())!)
+
+        let homeDef = getPositionRating((homeTeam?.getStartingDefenders())!)
+        let awayDef = getPositionRating((awayTeam?.getStartingDefenders())!)
+
+        let homeMid = getPositionRating((homeTeam?.getStartingMidfielders())!)
+        let awayMid = getPositionRating((awayTeam?.getStartingMidfielders())!)
+
+        let homeAtk = getPositionRating((homeTeam?.getStartingAttackers())!)
+        let awayAtk = getPositionRating((awayTeam?.getStartingAttackers())!)
         
-        let homeMid = homeTeam?.getMidfieldRating()
+        let homeOvr = (homeAtk + homeMid + homeDef + homeGlk)/4
+        let awayOvr = (awayAtk + awayMid + awayDef + awayGlk)/4
+        
+/*        let homeGKString = "Home GK - " + String(homeGlk)
+        let awayGKString = "Away GK - " + String(awayGlk)
+        let homeDEFString = "Home Def - " + String(homeDef)
+        let awayDEFString = "Away Def - " + String(awayDef)
+        let homeMIDString = "Home Mid - " + String(homeMid)
+        let awayMIDString = "Away Mid - " + String(awayMid)
+        let homeATKString = "Home Atk - " + String(homeAtk)
+        let awayATKString = "Away Atk - " + String(awayAtk)
+        let homeOverallString = "Home Overall - " + String(homeOvr)
+        let awayOverallString = "Away Overall - " + String(awayOvr)
+
+        print(homeGKString)
+        print(awayGKString)
+        print(homeDEFString)
+        print(awayDEFString)
+        print(homeMIDString)
+        print(awayMIDString)
+        print(homeATKString)
+        print(awayATKString)
+        print(homeOverallString)
+        print(awayOverallString)
+ */
+        
+        // Gets the rating fo the teams for calculation
+        
+/*        let homeMid = homeTeam?.getMidfieldRating()
         let awayMid = awayTeam?.getMidfieldRating()
         
         let homeAtk = homeTeam?.getAttackRating()
@@ -138,15 +157,17 @@ class Fixture: Object {
         
         let homeGlk = homeTeam?.getGoalkeeperRating()
         let awayGlk = awayTeam?.getGoalkeeperRating()
+*/
         
         
         // Base for formula on how chancces are created
-        let homeChanceBase = homeMid! + homeAtk! + awayMid! + awayDef!
-        let awayChanceBase = awayMid! + awayAtk! + homeMid! + homeDef!
+        let homeChanceBase = homeAdv + homeMid + homeAtk + awayMid + awayDef
+        let awayChanceBase = awayMid + awayAtk + homeMid + homeDef + homeAdv
         
-        // Gives rating of chance creation
-        let homeChanceTotal = ((homeAtk! + homeMid!) / homeChanceBase)  * 100
-        let awayChanceTotal = ((awayAtk! + awayMid!) / awayChanceBase)  * 100
+        // Gives rating of chance creation - percentage of ones MID and ATK vs opponent's MID and DEF
+        // AKA - Who's ones ATK vs DEF and vice versa
+        let homeChanceTotal = ((homeAdv + homeAtk + homeMid) / homeChanceBase)  * 100
+        let awayChanceTotal = ((awayAtk + awayMid) / awayChanceBase)  * 100
         
         //Percentage/chance the teams will create a scoring opportunity
         //The - 0.075 creates a 15% chance neither team will create a scoring opportunity
@@ -156,16 +177,21 @@ class Fixture: Object {
         //Values used when random number is generated for scoring opporunity
         //Between midfloor and midCeil represents the 15% chance that no one makes a scoring opportunity
         let midFloor = Int(homeChancePercent * 1000)
-        let midCeil = midFloor + 100
+        let midCeil = 1000 - Int(awayChancePercent * 1000)
+
+        if(midFloor >= midCeil){
+            print("This soundn't be....")
+        }
+        //let midCeil = midFloor + 100
         
         
-        
-        
-        let homeScoringTotal = homeAtk! + awayDef! + awayGlk!
-        let awayScoringTotal = awayAtk! + homeDef! + homeGlk!
-        
-        var homeScoringPerc = homeAtk! / homeScoringTotal
-        let awayScoringPerc = awayAtk! / awayScoringTotal
+        let homeScoringTotal = homeAtk + homeAdv + awayDef + awayGlk
+        let awayScoringTotal = awayAtk + homeDef + homeGlk + homeAdv
+
+        // Once chance is created, this is the chance the team will convert chance into a goal
+        // This is usally pretty low as its just your ATK vs oppponent's DEF and GK (Maybe include half midfield rating?)
+        var homeScoringPerc = (homeAtk + homeAdv) / homeScoringTotal
+        let awayScoringPerc = awayAtk / awayScoringTotal
         
         var homeGoalMidPoint = Int(homeScoringPerc * 1000) - 100
         var awayGoalMidPoint = Int(awayScoringPerc * 1000) - 100
@@ -197,7 +223,7 @@ class Fixture: Object {
                 //                println("away chance!")
                 var goalChance = Int(arc4random_uniform(1000))
                 if(goalChance < awayGoalMidPoint){
-                    //Goal for home team!
+                    //Goal for away team!
                     awayGoals++
                 }
                 
@@ -207,6 +233,14 @@ class Fixture: Object {
         }
         
         
+    }
+    
+    private func getPositionRating(players : [Player])->Float{
+        var rating : Float = 0.0
+        for(var i = 0; i < players.count; i++){
+            rating += players[i].getRating()
+        }
+        return rating / (Float(players.count))
     }
     
     private func updateTeamsFromResult(){
@@ -230,6 +264,30 @@ class Fixture: Object {
         
         awayTeam?.addGoalsFor(awayGoals)
         awayTeam?.addGoalsAgainst(homeGoals)
+    }
+    
+    
+    /* * * * * * * * * * * * * * */
+    /*     Display Functions     */
+    /* * * * * * * * * * * * * * */
+    
+    func printFixture(){
+        var homeString = "Home: " + homeTeamDisplayName!
+        var awayString = "Away: " + awayTeamDisplayName!
+        
+        if(homeGoals != -1){
+            homeString = homeString  + " - " + String(homeGoals)
+            awayString = awayString  + " - " + String(awayGoals)
+            
+            print(homeString)
+            print(awayString)
+
+            print("")
+            
+        }else{
+            print(String(gameWeek)  + " - " + homeString + " v. " + awayString)
+        }
+        
     }
     
 }

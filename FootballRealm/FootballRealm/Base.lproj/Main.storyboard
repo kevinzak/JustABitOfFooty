@@ -58,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OO8-29-MbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-764" y="270"/>
+            <point key="canvasLocation" x="-1260" y="282"/>
         </scene>
         <!--Main Club View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -150,12 +150,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1507" y="-42"/>
+            <point key="canvasLocation" x="1643" y="282"/>
         </scene>
-        <!--Team Creation View Controller-->
+        <!--Root Selection View Controller-->
         <scene sceneID="1t5-Mg-EHD">
             <objects>
-                <viewController storyboardIdentifier="TeamCreationViewControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oud-dm-CZd" customClass="TeamCreationViewController" customModule="FootballRealm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamCreationViewControllerIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oud-dm-CZd" customClass="RootSelectionViewController" customModule="FootballRealm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RcF-7j-W9p"/>
                         <viewControllerLayoutGuide type="bottom" id="j4m-dI-jIs"/>
@@ -164,73 +164,106 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Club Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPk-x3-7mu">
-                                <rect key="frame" x="-7" y="36" width="85" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Club Roots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxe-wm-ddw">
+                                <rect key="frame" x="32" y="110" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUl-0t-Sl4">
-                                <rect key="frame" x="122" y="32" width="97" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="SnQ-vI-1WE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7A-b0-wt1" userLabel="Roots Picker">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKq-Rv-QZ5">
+                                <rect key="frame" x="-34" y="222" width="179" height="30"/>
+                                <state key="normal" title="Continue to City Selection"/>
+                                <connections>
+                                    <action selector="finishedCreatingTeam" destination="oud-dm-CZd" eventType="touchUpInside" id="iEi-jU-MzZ"/>
+                                    <segue destination="ZA6-vf-64W" kind="show" id="j47-ng-KGf"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N7A-b0-wt1" userLabel="Roots Picker">
                                 <rect key="frame" x="142" y="99" width="363" height="82"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="82" id="gtQ-Ed-7IF"/>
                                 </constraints>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Club Roots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxe-wm-ddw">
-                                <rect key="frame" x="32" y="110" width="84" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKq-Rv-QZ5">
-                                <rect key="frame" x="-50" y="222" width="210" height="30"/>
-                                <state key="normal" title="Continue to Location Selection"/>
-                                <connections>
-                                    <action selector="finishedCreatingTeam" destination="oud-dm-CZd" eventType="touchUpInside" id="8Jn-GZ-8fK"/>
-                                    <segue destination="A90-hx-CXx" kind="show" id="83W-ea-gX9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="N7A-b0-wt1" firstAttribute="leading" secondItem="Vxe-wm-ddw" secondAttribute="trailing" constant="20" id="2Ve-2M-zhC"/>
                             <constraint firstItem="XKq-Rv-QZ5" firstAttribute="top" secondItem="Vxe-wm-ddw" secondAttribute="bottom" constant="25" id="6fC-Co-6uc"/>
-                            <constraint firstItem="JPk-x3-7mu" firstAttribute="leading" secondItem="Mt3-4A-XO1" secondAttribute="leadingMargin" constant="16" id="ApH-P7-mOM"/>
-                            <constraint firstItem="N7A-b0-wt1" firstAttribute="top" secondItem="cUl-0t-Sl4" secondAttribute="bottom" constant="20" id="N0i-fe-tOW"/>
-                            <constraint firstItem="cUl-0t-Sl4" firstAttribute="leading" secondItem="JPk-x3-7mu" secondAttribute="trailing" constant="20" id="Tev-dr-TZp"/>
                             <constraint firstItem="N7A-b0-wt1" firstAttribute="leading" secondItem="Vxe-wm-ddw" secondAttribute="leading" id="Tv9-r1-8Nq"/>
                             <constraint firstItem="Vxe-wm-ddw" firstAttribute="centerY" secondItem="N7A-b0-wt1" secondAttribute="centerY" id="UkC-Ue-eoM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="N7A-b0-wt1" secondAttribute="trailing" constant="20" id="VYI-Ze-sqF"/>
                             <constraint firstItem="Vxe-wm-ddw" firstAttribute="leading" secondItem="Mt3-4A-XO1" secondAttribute="leadingMargin" constant="16" id="Z07-yd-Be9"/>
-                            <constraint firstItem="Vxe-wm-ddw" firstAttribute="top" secondItem="JPk-x3-7mu" secondAttribute="bottom" constant="20" id="bX5-Ol-NH4"/>
-                            <constraint firstItem="cUl-0t-Sl4" firstAttribute="centerY" secondItem="JPk-x3-7mu" secondAttribute="centerY" id="hGq-bY-YI5"/>
                             <constraint firstItem="XKq-Rv-QZ5" firstAttribute="leading" secondItem="Mt3-4A-XO1" secondAttribute="leadingMargin" constant="16" id="kef-xF-gdF"/>
-                            <constraint firstItem="JPk-x3-7mu" firstAttribute="top" secondItem="RcF-7j-W9p" secondAttribute="bottom" constant="20" id="wlH-8k-F6O"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="bX5-Ol-NH4"/>
                                 <exclude reference="Tv9-r1-8Nq"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="clubNameTextView" destination="cUl-0t-Sl4" id="Rfz-lw-R0U"/>
-                        <outlet property="continueBtn" destination="XKq-Rv-QZ5" id="dHU-GR-kCS"/>
-                        <outlet property="rootPicker" destination="N7A-b0-wt1" id="SOB-YW-YqG"/>
+                        <outlet property="continueBtn" destination="XKq-Rv-QZ5" id="Wch-Dh-YcT"/>
+                        <outlet property="rootPicker" destination="N7A-b0-wt1" id="M7s-fH-SjX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3T-Qb-Nxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="23" y="601"/>
+            <point key="canvasLocation" x="-1260" y="1093"/>
+        </scene>
+        <!--City Creation View Controller-->
+        <scene sceneID="e7A-0f-njn">
+            <objects>
+                <viewController id="ZA6-vf-64W" customClass="CityCreationViewController" customModule="FootballRealm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LsC-6p-Q6e"/>
+                        <viewControllerLayoutGuide type="bottom" id="bAp-0d-THR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Evw-CE-gOs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="City Selection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V44-YK-dfB">
+                                <rect key="frame" x="215" y="32" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sB3-IA-1cf">
+                                <rect key="frame" x="190" y="384" width="182" height="30"/>
+                                <state key="normal" title="Continue to Select Ground"/>
+                                <connections>
+                                    <action selector="continueButtonAction" destination="ZA6-vf-64W" eventType="touchUpInside" id="Cgq-cT-e49"/>
+                                    <segue destination="A90-hx-CXx" kind="show" id="jLw-Wd-hfa"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-d6-KwJ">
+                                <rect key="frame" x="220" y="301" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="2Hd-o2-PdL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V44-YK-dfB" firstAttribute="centerX" secondItem="Evw-CE-gOs" secondAttribute="centerX" id="F6U-PO-YJ2"/>
+                            <constraint firstItem="V44-YK-dfB" firstAttribute="top" secondItem="LsC-6p-Q6e" secondAttribute="bottom" constant="16" id="Kmg-vr-9vb"/>
+                            <constraint firstItem="bAp-0d-THR" firstAttribute="top" secondItem="sB3-IA-1cf" secondAttribute="bottom" constant="16" id="McV-3c-lRI"/>
+                            <constraint firstItem="eaN-d6-KwJ" firstAttribute="centerX" secondItem="Evw-CE-gOs" secondAttribute="centerX" id="T2K-rT-Q3h"/>
+                            <constraint firstItem="sB3-IA-1cf" firstAttribute="centerX" secondItem="Evw-CE-gOs" secondAttribute="centerX" id="bpb-CO-ibZ"/>
+                            <constraint firstItem="sB3-IA-1cf" firstAttribute="top" secondItem="eaN-d6-KwJ" secondAttribute="bottom" constant="250" id="sQj-sY-q2s"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cityNameTextField" destination="eaN-d6-KwJ" id="Qcl-AK-tzR"/>
+                        <outlet property="continueBtn" destination="sB3-IA-1cf" id="7mN-l4-F2M"/>
+                        <outlet property="titleLabel" destination="V44-YK-dfB" id="aJQ-GS-IWo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rs6-pP-rpW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-559" y="1093"/>
         </scene>
         <!--Location View Controller-->
         <scene sceneID="ofM-Kz-B7s">
@@ -247,14 +280,15 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Club Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6Z-3X-XBN">
                                 <rect key="frame" x="215" y="42" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9AY-jb-3sb">
                                 <rect key="frame" x="261" y="414" width="62" height="30"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="48C-Ub-Ys9"/>
+                                    <action selector="continueButtonAction" destination="A90-hx-CXx" eventType="touchUpInside" id="q6Z-nc-GFE"/>
+                                    <segue destination="y94-GE-UTN" kind="show" id="gfY-fs-LvA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -279,10 +313,62 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0j-A3-0Ue" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="595"/>
+            <point key="canvasLocation" x="145" y="1093"/>
+        </scene>
+        <!--Team Creation View Controller-->
+        <scene sceneID="4yl-wU-efy">
+            <objects>
+                <viewController id="y94-GE-UTN" customClass="TeamCreationViewController" customModule="FootballRealm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gpf-UQ-lZa"/>
+                        <viewControllerLayoutGuide type="bottom" id="4bw-Dx-kVZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ojc-XD-Lz9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAa-dv-I6a">
+                                <rect key="frame" x="227" y="212" width="62" height="30"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="finishedCreatingTeam" destination="y94-GE-UTN" eventType="touchUpInside" id="0vC-Sr-5IA"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="wRZ-JA-C9O"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Club Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRC-lZ-O0L">
+                                <rect key="frame" x="72" y="92" width="90" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dyW-jO-eBr">
+                                <rect key="frame" x="170" y="88" width="259" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="hMn-Yh-cPT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dyW-jO-eBr" firstAttribute="leading" secondItem="XRC-lZ-O0L" secondAttribute="trailing" constant="16" id="VM7-US-6vt"/>
+                            <constraint firstItem="TAa-dv-I6a" firstAttribute="centerX" secondItem="ojc-XD-Lz9" secondAttribute="centerX" id="hFm-yE-ljV"/>
+                            <constraint firstItem="4bw-Dx-kVZ" firstAttribute="top" secondItem="TAa-dv-I6a" secondAttribute="bottom" constant="16" id="nIA-F0-VBL"/>
+                            <constraint firstItem="XRC-lZ-O0L" firstAttribute="leading" secondItem="ojc-XD-Lz9" secondAttribute="leadingMargin" constant="16" id="zTW-5P-3cQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="clubNameTextView" destination="dyW-jO-eBr" id="YbY-Zl-mHw"/>
+                        <outlet property="continueBtn" destination="TAa-dv-I6a" id="L8m-5f-fgf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4cJ-GO-5xv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916" y="1093"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="48C-Ub-Ys9"/>
+        <segue reference="wRZ-JA-C9O"/>
     </inferredMetricsTieBreakers>
 </document>

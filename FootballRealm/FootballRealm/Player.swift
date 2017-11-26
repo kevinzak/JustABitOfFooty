@@ -25,7 +25,13 @@ class Player: Object {
 
     dynamic var happiness: Float = 80.0
     dynamic var rating: Float = 0.0
+    dynamic var fitness: Float = 0.0
+    dynamic var injured: Bool = false
+    dynamic var banned: Bool = false
+    dynamic var gamesLeftInBan : Int = 0
 
+    // TODO: Contracts
+    
     // Trait variables
     dynamic var hotheaded : Bool = false
     dynamic var oneClubMan : Bool = false
@@ -41,13 +47,13 @@ class Player: Object {
     // Position traits
     dynamic var prolofic : Bool = false // Prolific attacker
     dynamic var pacher : Bool = false // Scores many goals
-    dynamic var stalwart : Bool = false
-    dynamic var creativeMastermind : Bool = false
+    dynamic var stalwart : Bool = false // Great defender
+    dynamic var creativeMastermind : Bool = false // Great playmaker
 
 
 
-//   dynamic var midfield_rating: Float = 0.0
-//   dynamic var defense_rating: Float = 0.0
+//  dynamic var midfield_rating: Float = 0.0
+//  dynamic var defense_rating: Float = 0.0
 //  dynamic var goalkeeper_rating: Float = 0.0
 //  dynamic var overall_rating: Float = 0.0
 //  dynamic var league_id: String = ""
@@ -89,6 +95,16 @@ class Player: Object {
     
     func getHappiness()->Float{
         return self.happiness
+    }
+    
+    func isAvailable()->Bool{
+        if(rating%2 == 0){
+            return true
+        }else{
+            return false
+        }
+        if(!self.injured && !banned){ return true}
+        return false;
     }
     
     

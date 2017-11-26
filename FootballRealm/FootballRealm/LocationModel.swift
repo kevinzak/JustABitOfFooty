@@ -11,12 +11,14 @@ import RealmSwift
 
 class LocationModel: Object {
     dynamic var mName: String = ""
+    dynamic var mSeating: String = "" // On Top of Pitch, Close to Pitch, Standard Distance, Track Around Pitch
     dynamic var mType: String = "" // Industrial (yards) (road) (court), affluent (bridge?) (court) (way) (street), residential (road) (cottage) (lane) (way) (street), swamplands (moor), countryside (grounds) (meadow), forrested area, park area (park)
     dynamic var mId: String = ""
 
     dynamic var mDesireabilityOfArea: Float = 0.0
     dynamic var mPitchQuality: Float = 0.0
     dynamic var mAccessibilty: Float = 0.0
+    dynamic var mHomeAdvantage: Float = 5.0
 
     // Trait variables
 //    dynamic var hotheaded : Bool = false
@@ -59,10 +61,9 @@ class LocationModel: Object {
     func getAccessibility()->Float{
         return mAccessibilty
     }
-
-
-
-    
+    func getHomeAdvantage()->Float{
+        return mHomeAdvantage
+    }
 }
 
 

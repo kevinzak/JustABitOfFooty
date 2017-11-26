@@ -187,6 +187,9 @@ class League: Object {
             mNewTeams.removeAll()
         }
         
+        print(league_id)
+        print(mTeams.count)
+        
         mFixtureManager!.updateTeams(mTeams)
         mFixtureManager!.resetFixtures()
         
