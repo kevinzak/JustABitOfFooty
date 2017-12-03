@@ -60,6 +60,9 @@ class Team: Object {
     var mMidfielders = List<Player>()
     var mAttackers = List<Player>()
     
+    // Manager
+    var mManager : Manager!
+    
     override static func primaryKey() -> String? {
         return "nid"
     }
@@ -188,6 +191,9 @@ class Team: Object {
     
     // Set Ground Properties
     func setGround(ground : LocationModel) { self.mGround = ground; }
+
+    // Set Manager Properties
+    func setManager(manager : Manager) { self.mManager = manager; }
 
     // Set League Properties
     func setLeagueId(league : String) { self.league_id = league }

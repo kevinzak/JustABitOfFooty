@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		754041A01FCB283600A85C6A /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7540419F1FCB283600A85C6A /* Manager.swift */; };
+		754041A21FCB364100A85C6A /* ManagerSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754041A11FCB364100A85C6A /* ManagerSelectionViewController.swift */; };
 		7556FDD61F111F6C00152F35 /* TeamCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7556FDD41F111F6C00152F35 /* TeamCreationViewController.swift */; };
 		7556FDD71F111F6C00152F35 /* LocationSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7556FDD51F111F6C00152F35 /* LocationSelectionViewController.swift */; };
 		7556FDD91F11222600152F35 /* CityCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7556FDD81F11222600152F35 /* CityCreationViewController.swift */; };
@@ -20,6 +22,7 @@
 		75AF71DE1EA4F87F0003AEC9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF71DD1EA4F87F0003AEC9 /* Player.swift */; };
 		75AF71E21EA544AC0003AEC9 /* PlayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF71E11EA544AC0003AEC9 /* PlayerFactory.swift */; };
 		75CA68321ED09EF300CE7B32 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA68311ED09EF300CE7B32 /* LocationModel.swift */; };
+		75D6B6591FD492990075DD02 /* ManagerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D6B6581FD492990075DD02 /* ManagerFactory.swift */; };
 		75DA82021DE27A1300BA20DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DA82011DE27A1300BA20DE /* AppDelegate.swift */; };
 		75DA82041DE27A1300BA20DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DA82031DE27A1300BA20DE /* ViewController.swift */; };
 		75DA82071DE27A1300BA20DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DA82051DE27A1300BA20DE /* Main.storyboard */; };
@@ -69,6 +72,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7540419F1FCB283600A85C6A /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Team/Manager.swift; sourceTree = "<group>"; };
+		754041A11FCB364100A85C6A /* ManagerSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagerSelectionViewController.swift; path = CreationViewController/ManagerSelectionViewController.swift; sourceTree = "<group>"; };
 		7556FDD41F111F6C00152F35 /* TeamCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeamCreationViewController.swift; path = CreationViewController/TeamCreationViewController.swift; sourceTree = "<group>"; };
 		7556FDD51F111F6C00152F35 /* LocationSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationSelectionViewController.swift; path = CreationViewController/LocationSelectionViewController.swift; sourceTree = "<group>"; };
 		7556FDD81F11222600152F35 /* CityCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityCreationViewController.swift; path = CreationViewController/CityCreationViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +87,7 @@
 		75AF71DD1EA4F87F0003AEC9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		75AF71E11EA544AC0003AEC9 /* PlayerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFactory.swift; sourceTree = "<group>"; };
 		75CA68311ED09EF300CE7B32 /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		75D6B6581FD492990075DD02 /* ManagerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerFactory.swift; sourceTree = "<group>"; };
 		75DA81FE1DE27A1200BA20DE /* FootballRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootballRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75DA82011DE27A1300BA20DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75DA82031DE27A1300BA20DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 		7540419E1FCB24BD00A85C6A /* Team */ = {
 			isa = PBXGroup;
 			children = (
+				7540419F1FCB283600A85C6A /* Manager.swift */,
 			);
 			name = Team;
 			sourceTree = "<group>";
@@ -143,6 +150,7 @@
 				7556FDD51F111F6C00152F35 /* LocationSelectionViewController.swift */,
 				7556FDD81F11222600152F35 /* CityCreationViewController.swift */,
 				7556FDDA1F1FE12200152F35 /* RootSelectionViewController.swift */,
+				754041A11FCB364100A85C6A /* ManagerSelectionViewController.swift */,
 			);
 			name = CreationViewControllers;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 				75AF71E11EA544AC0003AEC9 /* PlayerFactory.swift */,
 				75CA68311ED09EF300CE7B32 /* LocationModel.swift */,
 				75608F361EE5B13B00C9C09B /* MainClubViewController.swift */,
+				75D6B6581FD492990075DD02 /* ManagerFactory.swift */,
 			);
 			path = FootballRealm;
 			sourceTree = "<group>";
@@ -368,8 +377,10 @@
 				7559ACF51DE62FEC00E7C55B /* LeagueManager.swift in Sources */,
 				75DA82331DE27A2000BA20DE /* Team.swift in Sources */,
 				75AF71E21EA544AC0003AEC9 /* PlayerFactory.swift in Sources */,
+				754041A01FCB283600A85C6A /* Manager.swift in Sources */,
 				7556FDD91F11222600152F35 /* CityCreationViewController.swift in Sources */,
 				7556FDD61F111F6C00152F35 /* TeamCreationViewController.swift in Sources */,
+				75D6B6591FD492990075DD02 /* ManagerFactory.swift in Sources */,
 				75DA82041DE27A1300BA20DE /* ViewController.swift in Sources */,
 				75DA82021DE27A1300BA20DE /* AppDelegate.swift in Sources */,
 				7556FDDB1F1FE12200152F35 /* RootSelectionViewController.swift in Sources */,
@@ -381,6 +392,7 @@
 				75CA68321ED09EF300CE7B32 /* LocationModel.swift in Sources */,
 				7556FDD71F111F6C00152F35 /* LocationSelectionViewController.swift in Sources */,
 				75DA820A1DE27A1300BA20DE /* FootballRealm.xcdatamodeld in Sources */,
+				754041A21FCB364100A85C6A /* ManagerSelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
