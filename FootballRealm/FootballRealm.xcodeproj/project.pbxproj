@@ -216,10 +216,10 @@
 		75DA82001DE27A1200BA20DE /* FootballRealm */ = {
 			isa = PBXGroup;
 			children = (
-				75B37D381FE9AE1B00A44A56 /* Factories */,
 				75B37D371FE9AE1500A44A56 /* League */,
-				75B37D341FE9AD6800A44A56 /* GamePlayViewController */,
 				7540419E1FCB24BD00A85C6A /* Team */,
+				75B37D381FE9AE1B00A44A56 /* Factories */,
+				75B37D341FE9AD6800A44A56 /* GamePlayViewController */,
 				7556FDD31F111F0A00152F35 /* CreationViewControllers */,
 				75DA82011DE27A1300BA20DE /* AppDelegate.swift */,
 				75DA82031DE27A1300BA20DE /* ViewController.swift */,
