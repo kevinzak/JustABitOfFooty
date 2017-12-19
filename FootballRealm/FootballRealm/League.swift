@@ -215,6 +215,12 @@ class League: Object {
     }
     
     //   * * * * * DISPLAY FUNCTIONS * * * * *
+    func displayTeamManagers(){
+        for(var i = 0; i < mTeams.count; i++){
+            mTeams[i].displayManagers()
+            print()
+        }
+    }
     
     func displayTeamPlayers(){
         for(var i = 0; i < mTeams.count; i++){

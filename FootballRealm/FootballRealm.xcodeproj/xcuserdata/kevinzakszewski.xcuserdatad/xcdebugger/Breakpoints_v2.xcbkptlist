@@ -23,13 +23,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FootballRealm/FixtureManager.swift"
-            timestampString = "525809947.142929"
+            filePath = "FootballRealm/Fixture.swift"
+            timestampString = "535404947.637927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "updateTeams(_:)"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "playFixture()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

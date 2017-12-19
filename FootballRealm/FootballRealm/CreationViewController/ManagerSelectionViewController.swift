@@ -30,7 +30,6 @@ class ManagerSelectionViewController: UIViewController, UICollectionViewDelegate
     // List of managers
     var mManagers : [Manager] = []
     var mSelectedManagerIndex : Int = -1
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -259,7 +258,7 @@ class ManagerSelectionViewController: UIViewController, UICollectionViewDelegate
                 realm.add(team)
             }
         }else{
-            print("LocationSelectionViewController::setData - ERROR: Could not find user team when setting location model")
+            print("LocationSelectionViewController::setData - ERROR: Could not find user team when setting manager")
         }
     }
 

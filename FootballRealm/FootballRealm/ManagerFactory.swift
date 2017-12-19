@@ -24,6 +24,8 @@ class ManagerFactory {
     
     
     func generateManager(minVal: Float)->Manager{
+        let realm = try! Realm()
+
         let length = UInt32 (self.surnames.count)
         let rand = Int(arc4random_uniform(length))
         let coaching = Float(arc4random_uniform(50)) + minVal
@@ -33,7 +35,15 @@ class ManagerFactory {
 
         let firstName = (self.randomStringWithLength(1) as String) + "."
         let surname = self.surnames[rand]
-        let manager = Manager(name: firstName, surname: surname, coaching: coaching, tactical: tactical, transfer: transfer, manManagement: manManagement)
+        
+        let numOfManagers = realm.objects(Team.self).count
+
+        let manager = Manager(name: firstName, surname: surname, coaching: coaching, tactical: tactical, transfer: transfer, manManagement: manManagement, idSeed: numOfManagers)
+        
+        try! realm.write {
+            realm.add(manager)
+        }
+
         return manager
     }
     

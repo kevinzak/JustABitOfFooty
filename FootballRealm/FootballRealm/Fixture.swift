@@ -59,16 +59,16 @@ class Fixture: Object {
         let realm = try! Realm()
         
         try! realm.write {
-        homeGoals = 0
-        awayGoals = 0
+            self.homeGoals = 0
+            self.awayGoals = 0
         
-        // TODO: Implement match algorithm
-        playFixture()
+            // TODO: Implement match algorithm
+            playFixture()
         
-        setFixtureResult()
+            setFixtureResult()
 
 
-        updateTeamsFromResult()
+            updateTeamsFromResult()
         }
         
         if(printFixtr){
@@ -101,11 +101,15 @@ class Fixture: Object {
     
     private func playFixture(){
         let realm = try! Realm()
-        let homeTeam = realm.objects(Team.self).filter("nid == '" + homeTeamId! + "'").first
-        let awayTeam = realm.objects(Team.self).filter("nid == '" + awayTeamId! + "'").first
+        let homeTeam = realm.objects(Team.self).filter("nid == '" + self.homeTeamId! + "'").first
+        let awayTeam = realm.objects(Team.self).filter("nid == '" + self.awayTeamId! + "'").first
         
         // Gets the rating fo the teams for calculation
         let homeAdv = (homeTeam?.getHomeAdvantage())!
+        
+        let homeManRating = homeTeam?.getManager().getTacticalRating()
+        let awayManRating = awayTeam?.getManager().getTacticalRating()
+        
         let homeGlk = getPositionRating((homeTeam?.getStartingKeepers())!)
         let awayGlk = getPositionRating((awayTeam?.getStartingKeepers())!)
 
@@ -159,15 +163,17 @@ class Fixture: Object {
         let awayGlk = awayTeam?.getGoalkeeperRating()
 */
         
-        
         // Base for formula on how chancces are created
-        let homeChanceBase = homeAdv + homeMid + homeAtk + awayMid + awayDef
-        let awayChanceBase = awayMid + awayAtk + homeMid + homeDef + homeAdv
+        let homeChance = homeAdv + homeMid + homeAtk + homeManRating!
+        let awayChance = awayMid + awayAtk + awayManRating!
+        
+        let homeChanceBase = (homeChance) + awayChance
+        let awayChanceBase = (awayChance) + homeChance
         
         // Gives rating of chance creation - percentage of ones MID and ATK vs opponent's MID and DEF
         // AKA - Who's ones ATK vs DEF and vice versa
-        let homeChanceTotal = ((homeAdv + homeAtk + homeMid) / homeChanceBase)  * 100
-        let awayChanceTotal = ((awayAtk + awayMid) / awayChanceBase)  * 100
+        let homeChanceTotal = ((homeChance) / homeChanceBase) * 100
+        let awayChanceTotal = ((awayChance) / awayChanceBase) * 100
         
         //Percentage/chance the teams will create a scoring opportunity
         //The - 0.075 creates a 15% chance neither team will create a scoring opportunity
@@ -272,8 +278,10 @@ class Fixture: Object {
     /* * * * * * * * * * * * * * */
     
     func printFixture(){
-        var homeString = "Home: " + homeTeamDisplayName!
-        var awayString = "Away: " + awayTeamDisplayName!
+        var fixtureId = self.fixtureId
+
+        var homeString = "Home: " + self.homeTeamDisplayName!
+        var awayString = "Away: " + self.awayTeamDisplayName!
         
         if(homeGoals != -1){
             homeString = homeString  + " - " + String(homeGoals)

@@ -66,5 +66,10 @@ class MainClubViewController: UIViewController {
         mLeagueManager?.displayTeamPlayers()
     }
     
+    @IBAction func displayTeamManagers(){
+        mLeagueManager?.displayTeamManagers()
+    }
+
+    
 
 }

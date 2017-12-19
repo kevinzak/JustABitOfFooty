@@ -17,10 +17,10 @@ class Manager: Object {
     dynamic var team_id: String = ""
     
     
-    dynamic var ratingCoaching : Float = 80.0 // How effective he is helping his players grow
-    dynamic var ratingTactical : Float = 80.0 // How effective he is with match tactics
-    dynamic var ratingTransfer : Float = 0.0 // How effective he is with transfers
-    dynamic var ratingManManagement : Float = 60.0 // How effective he is with player happiness
+    dynamic var mRatingCoaching : Float = 80.0 // How effective he is helping his players grow
+    dynamic var mRatingTactical : Float = 80.0 // How effective he is with match tactics
+    dynamic var mRatingTransfer : Float = 0.0 // How effective he is with transfers
+    dynamic var mRatingManManagement : Float = 60.0 // How effective he is with player happiness
     
     
 // Specify properties to ignore (Realm won't persist these)
@@ -35,20 +35,34 @@ class Manager: Object {
     }
     
     
-    convenience init(name : String, surname : String, coaching : Float, tactical : Float, transfer : Float, manManagement : Float){
+    convenience init(name : String, surname : String, coaching : Float, tactical : Float, transfer : Float, manManagement : Float, idSeed : Int){
         self.init()
         firstName = name
         lastName = surname
-        ratingCoaching = coaching
-        ratingTactical = tactical
-        ratingTransfer = transfer
-        ratingManManagement = manManagement
+        nid = name + "_" + surname + "_" + String(idSeed)
+        mRatingCoaching = coaching
+        mRatingTactical = tactical
+        mRatingTransfer = transfer
+        mRatingManManagement = manManagement
     }
     
-    func getCoachingRating()->Float{ return ratingCoaching }
-    func getTacticalRating()->Float{ return ratingTactical }
-    func getTransferRating()->Float{ return ratingTransfer }
-    func getManManagementRating()->Float{ return ratingManManagement }
+    func getCoachingRating()->Float{ return self.mRatingCoaching }
+    func getTacticalRating()->Float{ return self.mRatingTactical }
+    func getTransferRating()->Float{ return self.mRatingTransfer }
+    func getManManagementRating()->Float{ return self.mRatingManManagement }
+    
+    // Display functions
+    func displayManager(){
+        print(firstName + " " + lastName)
+        print(mRatingCoaching)
+        print(mRatingTactical)
+        print(mRatingTransfer)
+        print(mRatingManManagement)
+        print("* * * * * * * * * * * * * *")
+        
+    }
+
+    
 }
 
 

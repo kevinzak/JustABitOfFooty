@@ -146,6 +146,12 @@ class LeagueManager :NSObject {
             mLeagues[i].displayTeamPlayers()
         }
     }
+    
+    func displayTeamManagers(){
+        for(var i = 0; i < mLeagues.count; i++){
+            mLeagues[i].displayTeamManagers()
+        }
+    }
 
     
 }

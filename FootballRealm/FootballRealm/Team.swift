@@ -61,7 +61,7 @@ class Team: Object {
     var mAttackers = List<Player>()
     
     // Manager
-    var mManager : Manager!
+    dynamic var mManager : Manager!
     
     override static func primaryKey() -> String? {
         return "nid"
@@ -83,6 +83,7 @@ class Team: Object {
     }
     
     private func generateTeam(){
+        mManager = ManagerFactory.sharedInstance.generateManager(20) // Generate with default amount
         mGoalkeepers = PlayerFactory.sharedInstance.generateGoalkeepers() // Generate with default amount
         mDefenders = PlayerFactory.sharedInstance.generateDefenders() // Generate with default amount
         mMidfielders = PlayerFactory.sharedInstance.generateMidfielders() // Generate with default amount
@@ -94,6 +95,11 @@ class Team: Object {
         var midfielderRating :Float = 0.0
         var attackerRating :Float = 0.0
 
+        
+        // Show Manager
+        print("Manager:")
+        mManager.displayManager()
+        
         // Make Goalkeepers
         for(var i = 0; i < mGoalkeepers.count; i++){
             mGoalkeepers[i].displayPlayer()
@@ -121,6 +127,8 @@ class Team: Object {
             mAttackers[i].displayPlayer()
             attackerRating += mAttackers[i].getRating()
         }
+        
+        
         self.attack_rating = attackerRating/Float(mAttackers.count)
 
 
@@ -359,6 +367,11 @@ class Team: Object {
     /* * * * * * * * * * * * * * */
     /*     Match  Functions      */
     /* * * * * * * * * * * * * * */
+    func getManager()->Manager{
+        return self.mManager
+    }
+    
+
     func getStartingKeepers()->[Player]{
         let sortedKeepers = mGoalkeepers.sort { t1, t2 in
             if t1.isAvailable() == t2.isAvailable() { return t1.rating > t2.rating }
@@ -431,6 +444,11 @@ class Team: Object {
         
     }
 
+    func displayManagers(){
+        print(name)
+        print("---Manager---")
+        self.mManager.displayManager()
+    }
     
     func displayPlayers(){
         print(name)
