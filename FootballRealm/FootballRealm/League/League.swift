@@ -43,7 +43,7 @@ class League: Object {
         
         for  team in teams{
             try! realm.write {
-                team.league_id = id
+                team.setLeagueId(self.league_id)
                 realm.add(team, update: true)
             }
             self.mTeams.append(team)
@@ -54,7 +54,7 @@ class League: Object {
         self.maxTransfer = maxTransferAmt
         self.minTransfer = minTransferAmt
         
-        league_table = LeagueTable(teams: teams, league: name)
+        league_table = LeagueTable(teams: teams, league: self.league_id, name: self.name)
         league_table!.sortTable();
 //        displayTable()
 
@@ -180,10 +180,10 @@ class League: Object {
             
             // Added promoted and relegated teams
             for(var i = 0; i < mNewTeams.count; i++){
+                mNewTeams[i].setLeagueId(league_id)
+                realm.add(mNewTeams[i])
                 mTeams.append(mNewTeams[i])
             }
-            
-            
             mNewTeams.removeAll()
         }
         

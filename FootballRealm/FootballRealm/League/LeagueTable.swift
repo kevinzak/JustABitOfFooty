@@ -12,15 +12,18 @@ import RealmSwift
 class LeagueTable: Object {
     var mOrderedTeamData = List<LeagueTableData>()
     dynamic var leagueId = ""
+    dynamic var displayName = ""
+
 // Specify properties to ignore (Realm won't persist these)
     
 //  override static func ignoredProperties() -> [String] {
 //    return []
 //  }
 
-    convenience init(teams : List<Team>, league: String) {
+    convenience init(teams : List<Team>, league: String, name : String) {
         self.init()
         leagueId = league
+        displayName = name
         initiateLeagueTableData(teams)
     }
     
@@ -48,6 +51,7 @@ class LeagueTable: Object {
     func printTable(){
         let realm = try! Realm()
         let teamData = realm.objects(LeagueTableData.self).filter("leagueId == '" + leagueId + "'").sorted("points", ascending: false)
+        print(leagueId)
         
         for(var i = 0; i < teamData.count; i++){
             print(teamData[i].getTeamName())
