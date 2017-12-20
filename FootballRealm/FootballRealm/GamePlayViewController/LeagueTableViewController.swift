@@ -32,4 +32,11 @@ class LeagueTableViewController: UIViewController {
     }
     */
 
+    @IBAction func backAction(){
+        if let navController = self.navigationController {
+            navController.popViewControllerAnimated(true)
+        }
+    }
+    
+
 }

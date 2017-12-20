@@ -14,6 +14,7 @@ import RealmSwift
 class MainClubViewController: UIViewController {
 
     var mLeagueManager : LeagueManager!
+    var mLeagueTableViewController : LeagueTableViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -69,6 +70,17 @@ class MainClubViewController: UIViewController {
     @IBAction func displayTeamManagers(){
         mLeagueManager?.displayTeamManagers()
     }
+
+    
+    @IBAction func showLeagueTable(){
+        if mLeagueTableViewController == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            mLeagueTableViewController = storyboard.instantiateViewControllerWithIdentifier("leagueTableViewController") as! LeagueTableViewController
+        }
+        self.navigationController!.pushViewController(mLeagueTableViewController, animated: true)
+
+    }
+    
 
     
 
