@@ -15,6 +15,8 @@ class Fixture: Object {
         case HOME_WIN
         case AWAY_WIN
         case DRAW
+        case NOT_PLAYED
+
     }
     
     //TODO: Implement fixture date
@@ -23,31 +25,35 @@ class Fixture: Object {
     dynamic var leagueId = ""
     dynamic var fixtureId = ""
 
-    dynamic var homeTeamId : String?
-    dynamic var awayTeamId : String?
+    dynamic var homeTeamId : String = ""
+    dynamic var awayTeamId : String = ""
 
-    dynamic var homeTeamDisplayName : String?
-    dynamic var awayTeamDisplayName : String?
+    dynamic var homeTeamDisplayName : String = ""
+    dynamic var awayTeamDisplayName : String = ""
     
     dynamic var winningTeam : Team?
     dynamic var losingTeam : Team?
     
     dynamic var homeGoals = -1
     dynamic var awayGoals = -1
+    dynamic var userTeamFixture = false
+    dynamic var matchPlayed = false
+
     
-    var fixtureResult : FixtureResult?
+    var fixtureResult : FixtureResult = FixtureResult.NOT_PLAYED
     
     override static func primaryKey() -> String? {
         return "fixtureId"
     }
 
     
-    convenience init(home : Team, away : Team, id : String, week : Int){
+    convenience init(home : Team, away : Team, id : String, week : Int, userMatch : Bool){
         self.init()
         self.gameWeek = week
         self.leagueId = id
         self.homeTeamId = home.getId()
         self.awayTeamId = away.getId()
+        self.userTeamFixture = userMatch
         
         self.homeTeamDisplayName = home.getName()
         self.awayTeamDisplayName = away.getName()
@@ -77,6 +83,7 @@ class Fixture: Object {
     }
     
     func setFixtureResult(){
+        matchPlayed = true
         if(homeGoals == awayGoals){
             fixtureResult = FixtureResult.DRAW
         }else if(homeGoals > awayGoals){
@@ -86,11 +93,17 @@ class Fixture: Object {
         }
     }
     
-    func getResult()->FixtureResult{ return fixtureResult! }
-    
+    func getResult()->FixtureResult{ return fixtureResult }
+    func isMatchPlayed()->Bool { return matchPlayed }
     func getHomeScore()->Int { return homeGoals }
     func getAwayScore()->Int { return awayGoals }
-    
+    func getGameWeek()->Int { return gameWeek }
+    func getLeagueId()->String { return leagueId }
+    func getFixtureId()->String { return fixtureId }
+    func getHomeTeamId()->String { return homeTeamId }
+    func getAwayTeamId()->String { return awayTeamId }
+    func getHomeTeamDisplayName()->String { return homeTeamDisplayName }
+    func getAwayTeamDisplayName()->String { return awayTeamDisplayName }
     
     /*
     Attack
@@ -101,8 +114,8 @@ class Fixture: Object {
     
     private func playFixture(){
         let realm = try! Realm()
-        let homeTeam = realm.objects(Team.self).filter("nid == '" + self.homeTeamId! + "'").first
-        let awayTeam = realm.objects(Team.self).filter("nid == '" + self.awayTeamId! + "'").first
+        let homeTeam = realm.objects(Team.self).filter("nid == '" + self.homeTeamId + "'").first
+        let awayTeam = realm.objects(Team.self).filter("nid == '" + self.awayTeamId + "'").first
         
         // Gets the rating fo the teams for calculation
         let homeAdv = (homeTeam?.getHomeAdvantage())!
@@ -237,8 +250,6 @@ class Fixture: Object {
                 //                println("No chance!")
             }
         }
-        
-        
     }
     
     private func getPositionRating(players : [Player])->Float{
@@ -251,8 +262,8 @@ class Fixture: Object {
     
     private func updateTeamsFromResult(){
         let realm = try! Realm()
-        let homeTeam = realm.objects(LeagueTableData.self).filter("teamId == '" + homeTeamId! + "'").first
-        let awayTeam = realm.objects(LeagueTableData.self).filter("teamId == '" + awayTeamId! + "'").first
+        let homeTeam = realm.objects(LeagueTableData.self).filter("teamId == '" + homeTeamId + "'").first
+        let awayTeam = realm.objects(LeagueTableData.self).filter("teamId == '" + awayTeamId + "'").first
 
         if(fixtureResult == FixtureResult.HOME_WIN){
             homeTeam?.addWin()
@@ -280,8 +291,8 @@ class Fixture: Object {
     func printFixture(){
         var fixtureId = self.fixtureId
 
-        var homeString = "Home: " + self.homeTeamDisplayName!
-        var awayString = "Away: " + self.awayTeamDisplayName!
+        var homeString = "Home: " + self.homeTeamDisplayName
+        var awayString = "Away: " + self.awayTeamDisplayName
         
         if(homeGoals != -1){
             homeString = homeString  + " - " + String(homeGoals)

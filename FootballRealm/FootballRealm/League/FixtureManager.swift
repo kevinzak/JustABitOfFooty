@@ -117,7 +117,13 @@ class FixtureManager: Object {
                     
                 }
                 
-                var fixture = Fixture(home: homeTeam!, away: awayTeam!, id : leagueId, week : i)
+                var isUserMatch = false
+                if(homeTeam?.getId() == "user" || awayTeam?.getId() == "user"){
+                    isUserMatch = true
+                }
+            
+                
+                var fixture = Fixture(home: homeTeam!, away: awayTeam!, id : leagueId, week : i, userMatch: isUserMatch)
 
                 try! realm.write {
                     realm.add(fixture)
@@ -156,7 +162,11 @@ class FixtureManager: Object {
         var weeklyFixtures = realm.objects(Fixture.self).filter("leagueId contains '" + leagueId + "' AND gameWeek == " + String(week))
 
         for(var i = 0; i < weeklyFixtures.count; i++){
-            weeklyFixtures[i].playMatch(printFixtures)
+            if(weeklyFixtures[i].isMatchPlayed() == false){
+                weeklyFixtures[i].playMatch(printFixtures)
+            }else{
+                print("Match played!")
+            }
         }
         
         try! realm.write {
@@ -166,8 +176,28 @@ class FixtureManager: Object {
         if(printFixtures){
             print()
         }
+    }
+
+    func playFixtureById(id : String, printFixtures : Bool = false){
+        let realm = try! Realm()
         
+        var fixture = realm.objects(Fixture.self).filter("leagueId contains '" + leagueId + "' AND fixtureId contains '" + id + "'")
         
+        if(fixture.count > 0){
+            if(fixture[0].isMatchPlayed() == false){
+                fixture[0].playMatch(printFixtures)
+            }else{
+                print("Match played!")
+            }
+        }
+
+        try! realm.write {
+            realm.add(fixture, update: true)
+        }
+        
+        if(printFixtures){
+            print()
+        }
     }
 
     func resetFixtures(){
@@ -180,7 +210,20 @@ class FixtureManager: Object {
         }
         makeFixtures()
     }
-
+    /* * * * * * * * * * * * * * */
+    /*      Getters/Setters      */
+    /* * * * * * * * * * * * * * */
+    
+    func getGameWeek()->Int{
+        return self.currentWeek
+    }
+    func getLeagueId()->String{
+        return self.leagueId
+    }
+    func getSeasonLength()->Int{
+        return self.seasonLength
+    }
+    
     
     /* * * * * * * * * * * * * * */
     /*     Display Functions     */

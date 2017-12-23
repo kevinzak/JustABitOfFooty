@@ -15,6 +15,7 @@ class MainClubViewController: UIViewController {
 
     var mLeagueManager : LeagueManager!
     var mLeagueTableViewController : LeagueTableViewController!
+    var mMatchViewController : MatchViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,7 +82,13 @@ class MainClubViewController: UIViewController {
 
     }
     
-
+    @IBAction func playMatch(sender: AnyObject) {
+        if mMatchViewController == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            mMatchViewController = storyboard.instantiateViewControllerWithIdentifier("matchViewController") as! MatchViewController
+        }
+        self.navigationController!.pushViewController(mMatchViewController, animated: true)
+    }
     
 
 }

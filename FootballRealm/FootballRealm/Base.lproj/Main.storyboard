@@ -83,8 +83,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSJ-8N-KN6">
-                                <rect key="frame" x="255" y="256" width="91" height="30"/>
-                                <state key="normal" title="Display Table">
+                                <rect key="frame" x="225" y="256" width="151" height="30"/>
+                                <state key="normal" title="Console Display Table">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -92,8 +92,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sz6-p7-Im0">
-                                <rect key="frame" x="249" y="294" width="103" height="30"/>
-                                <state key="normal" title="Display History">
+                                <rect key="frame" x="219" y="294" width="163" height="30"/>
+                                <state key="normal" title="Console Display History">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -110,36 +110,44 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWL-HR-MMH">
-                                <rect key="frame" x="235" y="332" width="131" height="30"/>
-                                <state key="normal" title="Display Team Stats"/>
+                                <rect key="frame" x="205" y="332" width="191" height="30"/>
+                                <state key="normal" title="Console Display Team Stats"/>
                                 <connections>
                                     <action selector="displayTeamRatings" destination="BYZ-38-t0r" eventType="touchUpInside" id="AXg-k6-vrr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siy-hj-CTh">
-                                <rect key="frame" x="249" y="370" width="104" height="30"/>
-                                <state key="normal" title="Display Players"/>
+                                <rect key="frame" x="219" y="370" width="164" height="30"/>
+                                <state key="normal" title="Console Display Players"/>
                                 <connections>
                                     <action selector="displayTeamPlayers" destination="BYZ-38-t0r" eventType="touchUpInside" id="I50-Eh-z7V"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTa-CI-Hta">
-                                <rect key="frame" x="240" y="408" width="122" height="30"/>
-                                <state key="normal" title="Display Managers"/>
+                                <rect key="frame" x="210" y="408" width="182" height="30"/>
+                                <state key="normal" title="Console Display Managers"/>
                                 <connections>
                                     <action selector="displayTeamManagers" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zd6-Ry-fCf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jj-QK-g04">
-                                <rect key="frame" x="212" y="520" width="179" height="30"/>
-                                <state key="normal" title="Test Display League Table"/>
+                                <rect key="frame" x="258" y="499" width="92" height="30"/>
+                                <state key="normal" title="League Table"/>
                                 <connections>
                                     <action selector="showLeagueTable" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gcj-hx-nKu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EeN-Xo-Q0z">
+                                <rect key="frame" x="245" y="537" width="112" height="30"/>
+                                <state key="normal" title="Play Next Match"/>
+                                <connections>
+                                    <action selector="playMatch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ekr-zV-Xjl"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="EeN-Xo-Q0z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0jI-I2-Z73"/>
                             <constraint firstItem="Sz6-p7-Im0" firstAttribute="centerX" secondItem="VSJ-8N-KN6" secondAttribute="centerX" id="C5s-OB-FG9"/>
                             <constraint firstItem="7S3-S2-arz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="GUs-zl-jXG"/>
                             <constraint firstItem="Sz6-p7-Im0" firstAttribute="top" secondItem="VSJ-8N-KN6" secondAttribute="bottom" constant="5" id="KNK-4p-rGT"/>
@@ -150,8 +158,10 @@
                             <constraint firstItem="siy-hj-CTh" firstAttribute="top" secondItem="xWL-HR-MMH" secondAttribute="bottom" constant="8" id="SLG-fJ-mPP"/>
                             <constraint firstItem="7S3-S2-arz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TqZ-9U-WZ2"/>
                             <constraint firstItem="qTa-CI-Hta" firstAttribute="centerX" secondItem="siy-hj-CTh" secondAttribute="centerX" id="Wf1-4r-DsA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EeN-Xo-Q0z" secondAttribute="bottom" constant="30" id="cLO-1T-YhU"/>
                             <constraint firstItem="qTa-CI-Hta" firstAttribute="top" secondItem="siy-hj-CTh" secondAttribute="bottom" constant="5" id="dgN-FN-ZQN"/>
                             <constraint firstItem="6pM-Qf-pPS" firstAttribute="top" secondItem="7S3-S2-arz" secondAttribute="bottom" constant="10" id="fHe-23-SIJ"/>
+                            <constraint firstItem="EeN-Xo-Q0z" firstAttribute="top" secondItem="8Jj-QK-g04" secondAttribute="bottom" constant="16" id="hHn-d1-Ofy"/>
                             <constraint firstItem="VSJ-8N-KN6" firstAttribute="centerX" secondItem="6pM-Qf-pPS" secondAttribute="centerX" id="mNJ-W3-6YS"/>
                             <constraint firstItem="VSJ-8N-KN6" firstAttribute="top" secondItem="6pM-Qf-pPS" secondAttribute="bottom" constant="20" id="s59-re-c2Q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6pM-Qf-pPS" secondAttribute="trailing" constant="226" id="s68-6e-6h3"/>
@@ -163,6 +173,7 @@
                             <mask key="constraints">
                                 <exclude reference="MJe-Fq-PTg"/>
                                 <exclude reference="s68-6e-6h3"/>
+                                <exclude reference="waF-zz-RcB"/>
                             </mask>
                         </variation>
                     </view>
@@ -437,6 +448,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wl-SH-1Z3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3200" y="275"/>
+        </scene>
+        <!--Match View Controller-->
+        <scene sceneID="hRS-Od-PCR">
+            <objects>
+                <viewController storyboardIdentifier="matchViewController" id="0EI-z5-V2B" customClass="MatchViewController" customModule="FootballRealm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WzV-iF-zbe"/>
+                        <viewControllerLayoutGuide type="bottom" id="YXU-51-r7s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ATd-Qt-1sF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wh-yg-Fea">
+                                <rect key="frame" x="281" y="535" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backAction:" destination="0EI-z5-V2B" eventType="touchUpInside" id="Jze-Y6-WOi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8U-S0-T1Q">
+                                <rect key="frame" x="285" y="497" width="30" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playMatch:" destination="0EI-z5-V2B" eventType="touchUpInside" id="5GW-Np-Lhd"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6t-EZ-VHf">
+                                <rect key="frame" x="278" y="37" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="awayName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kc-Td-MZj">
+                                <rect key="frame" x="386" y="85" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="homeName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZg-Zl-KyP">
+                                <rect key="frame" x="41" y="85" width="89" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="awayGoals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoW-wL-fCY">
+                                <rect key="frame" x="367" y="129" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="homeScore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQE-v6-QOK">
+                                <rect key="frame" x="20" y="129" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eoW-wL-fCY" firstAttribute="top" secondItem="0Kc-Td-MZj" secondAttribute="bottom" constant="16" id="2Q6-lW-tIu"/>
+                            <constraint firstItem="a8U-S0-T1Q" firstAttribute="centerX" secondItem="ATd-Qt-1sF" secondAttribute="centerX" id="7TA-vp-I2u"/>
+                            <constraint firstItem="YXU-51-r7s" firstAttribute="top" secondItem="5wh-yg-Fea" secondAttribute="bottom" constant="30" id="8sq-8k-JCO"/>
+                            <constraint firstItem="dQE-v6-QOK" firstAttribute="centerX" secondItem="iZg-Zl-KyP" secondAttribute="centerX" id="Cdg-pZ-eYz"/>
+                            <constraint firstItem="5wh-yg-Fea" firstAttribute="top" secondItem="a8U-S0-T1Q" secondAttribute="bottom" constant="16" id="Qbd-aw-1Uk"/>
+                            <constraint firstItem="5wh-yg-Fea" firstAttribute="centerX" secondItem="ATd-Qt-1sF" secondAttribute="centerX" id="ThS-Dd-uIu"/>
+                            <constraint firstItem="0Kc-Td-MZj" firstAttribute="centerX" secondItem="ATd-Qt-1sF" secondAttribute="centerX" constant="100" id="XTg-hf-Hen"/>
+                            <constraint firstItem="k6t-EZ-VHf" firstAttribute="top" secondItem="WzV-iF-zbe" secondAttribute="bottom" constant="16" id="jtb-2J-hnZ"/>
+                            <constraint firstItem="eoW-wL-fCY" firstAttribute="centerX" secondItem="0Kc-Td-MZj" secondAttribute="centerX" id="qx5-4X-M8Z"/>
+                            <constraint firstItem="dQE-v6-QOK" firstAttribute="top" secondItem="iZg-Zl-KyP" secondAttribute="bottom" constant="16" id="sDy-Z3-tL8"/>
+                            <constraint firstItem="iZg-Zl-KyP" firstAttribute="centerX" secondItem="ATd-Qt-1sF" secondAttribute="centerX" constant="-100" id="umW-uM-l4q"/>
+                            <constraint firstItem="k6t-EZ-VHf" firstAttribute="centerX" secondItem="ATd-Qt-1sF" secondAttribute="centerX" id="vpH-VV-faP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mAwayGoalsLbl" destination="eoW-wL-fCY" id="j5v-uI-SUk"/>
+                        <outlet property="mAwayTeamLbl" destination="0Kc-Td-MZj" id="nJV-nH-MOZ"/>
+                        <outlet property="mHomeGoalsLbl" destination="dQE-v6-QOK" id="MAp-1u-kPu"/>
+                        <outlet property="mHomeTeamLbl" destination="iZg-Zl-KyP" id="RoC-LD-gNc"/>
+                        <outlet property="mWeekLbl" destination="k6t-EZ-VHf" id="QAg-g8-VfD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Q3-jZ-3n2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3192" y="950"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4zL-2m-q8t">
@@ -714,6 +810,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Sf2-6S-cA4"/>
+        <segue reference="syo-an-V8k"/>
     </inferredMetricsTieBreakers>
 </document>
